@@ -7,7 +7,7 @@ class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
 
   @override
-  _WelcomePage createState() => _WelcomePage();
+  State<WelcomePage> createState() => _WelcomePage();
 }
 
 class _WelcomePage extends State<WelcomePage> {
@@ -26,19 +26,20 @@ class _WelcomePage extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
+            width: MediaQuery.of(context).size.width,
             color: Colors.black,
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.8,
-                    child: Image.asset('assets/images/logo_welcome_page.png'),
+                    height: MediaQuery.of(context).size.height * 0.37,
                   ),
+                  Image.asset('assets/images/logo_welcome_page.png'),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    child: const ReservedRightsWidget(),
+                    height: MediaQuery.of(context).size.height * 0.43,
                   ),
+                  const ReservedRightsWidget(),
                 ])));
   }
 }

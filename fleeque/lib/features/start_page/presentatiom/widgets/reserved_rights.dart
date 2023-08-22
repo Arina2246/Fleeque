@@ -10,7 +10,7 @@ class ReservedRightsWidget extends StatelessWidget {
       '© ALL RIGHTS RESERVED',
       style: GoogleFonts.roboto(
         letterSpacing: .8,
-        height: 16,
+        height: 1.6,
         color: Colors.white,
         fontSize: 11,
         fontWeight: FontWeight.w400,

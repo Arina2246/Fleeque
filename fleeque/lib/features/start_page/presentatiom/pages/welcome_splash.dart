@@ -7,14 +7,13 @@ class WelcomeSplashPage extends StatefulWidget {
   const WelcomeSplashPage({super.key});
 
   @override
-  _WelcomeSplashPage createState() => _WelcomeSplashPage();
+  State<WelcomeSplashPage> createState() => _WelcomeSplashPage();
 }
 
 class _WelcomeSplashPage extends State<WelcomeSplashPage> {
   bool isOnline = false;
   bool isDiscontShown = false;
   bool isWalletShown = false;
-  bool isInformationShown = true;
 
   @override
   void initState() {
@@ -23,7 +22,6 @@ class _WelcomeSplashPage extends State<WelcomeSplashPage> {
       isOnline = false;
       isDiscontShown = false;
       isWalletShown = false;
-      isInformationShown = true;
     });
   }
 
@@ -35,7 +33,6 @@ class _WelcomeSplashPage extends State<WelcomeSplashPage> {
           isOnline: isOnline,
           isDiscontShown: isDiscontShown,
           isWalletShown: isWalletShown,
-          isInformationShown: isInformationShown,
         ),
         body: Container(
           height: double.infinity,
@@ -43,16 +40,15 @@ class _WelcomeSplashPage extends State<WelcomeSplashPage> {
           decoration: const BoxDecoration(
               image: DecorationImage(
                   fit: BoxFit.fill,
-                  image: NetworkImage('assets/images/welcome_influencer.png'))),
+                  image: AssetImage('assets/images/welcome_influencer.png'))),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.3,
+                  height: MediaQuery.of(context).size.height * 0.33,
                 ),
                 SizedBox(
-                  // height: MediaQuery.of(context).size.height * 0.1,
                   child: Text(
                     'Welcome to',
                     style: GoogleFonts.montserrat(
@@ -64,13 +60,10 @@ class _WelcomeSplashPage extends State<WelcomeSplashPage> {
                     ),
                   ),
                 ),
+                Image.asset('assets/images/logo_welcome_page.png'),
                 SizedBox(
-                  // height: MediaQuery.of(context).size.height * 0.1,
-                  child: Image.asset('assets/images/logo_welcome_page.png'),
+                  height: MediaQuery.of(context).size.height * 0.32,
                 ),
-                // SizedBox(
-                //   height: MediaQuery.of(context).size.height * 0.25,
-                // ),
                 SizedBox(
                     width: 247,
                     height: 60,
@@ -86,9 +79,9 @@ class _WelcomeSplashPage extends State<WelcomeSplashPage> {
                                     borderRadius: BorderRadius.circular(94.0),
                                     side: const BorderSide(
                                         color: Colors.white)))),
-                        onPressed: () => print('jk'),
+                        onPressed: () => print('start'),
                         child: Text(
-                          'get started'.toUpperCase(),
+                          'GET STARTED',
                           style: GoogleFonts.roboto(
                             letterSpacing: .8,
                             color: Colors.black,
@@ -96,10 +89,10 @@ class _WelcomeSplashPage extends State<WelcomeSplashPage> {
                             fontWeight: FontWeight.w500,
                           ),
                         ))),
-                const SizedBox(
-                  // height: MediaQuery.of(context).size.height * 0.05,
-                  child: ReservedRightsWidget(),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.05,
                 ),
+                const ReservedRightsWidget(),
               ]),
         ));
   }
