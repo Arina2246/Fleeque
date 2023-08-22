@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:fleeque/features/start_page/presentatiom/widgets/reserved_rights.dart';
 import 'package:fleeque/features/start_page/presentatiom/pages/welcome_splash.dart';
 import 'package:flutter/material.dart';
 
@@ -37,16 +37,7 @@ class _WelcomePage extends State<WelcomePage> {
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.2,
-                    child: Text(
-                      '© ALL RIGHTS RESERVED',
-                      style: GoogleFonts.roboto(
-                        letterSpacing: .8,
-                        height: 16,
-                        color: Colors.white,
-                        fontSize: 11,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                    child: const ReservedRightsWidget(),
                   ),
                 ])));
   }
