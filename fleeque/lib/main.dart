@@ -1,4 +1,4 @@
-import 'package:fleeque/features/start_page/presentatiom/pages/welcome.dart';
+import 'package:fleeque/features/welcome_feature/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Fleeque',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      home: const WelcomePage(),
+      home: const WelcomeScreen(),
     );
   }
 }
