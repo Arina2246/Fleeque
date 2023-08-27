@@ -19,7 +19,7 @@ class LogoWidget extends StatelessWidget {
             fontWeight: FontWeight.w800,
           ),
         ),
-        Image.asset('assets/images/welcome_logo.png'),
+        Image.asset('assets/images/welcome_logo.png', package: 'welcome'),
       ],
     );
   }

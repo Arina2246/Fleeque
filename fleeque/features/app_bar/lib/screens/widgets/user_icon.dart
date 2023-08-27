@@ -18,9 +18,14 @@ class UserIconWidget extends StatelessWidget {
             height: 20,
             width: 20,
             decoration: const BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/images/user_icon.png'))),
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage(
+                  'assets/images/user_icon.png',
+                  package: 'app_bar',
+                ),
+              ),
+            ),
             child: Row(
               children: [
                 const SizedBox(
@@ -34,7 +39,8 @@ class UserIconWidget extends StatelessWidget {
                     if (isOnline)
                       SizedBox(
                         child: Image.asset(
-                            'assets/images/app_bar/online_marker_icon.png'),
+                            'assets/images/online_marker_icon.png',
+                            package: 'app_bar'),
                       ),
                   ],
                 ),

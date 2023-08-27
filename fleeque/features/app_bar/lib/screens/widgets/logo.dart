@@ -6,6 +6,8 @@ class LogoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {}, child: Image.asset('assets/images/logo_app_bar.png'));
+      onTap: () {},
+      child: Image.asset('assets/images/logo_app_bar.png', package: 'app_bar'),
+    );
   }
 }

@@ -31,9 +31,8 @@ class _WelcomeSplashPage extends State<WelcomeScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.fill,
-            image: AssetImage(
-              'assets/images/welcome_ios_influencer.png',
-            ),
+            image: AssetImage('assets/images/welcome_ios_influencer.png',
+                package: 'welcome'),
           ),
         ),
         child: const Column(

@@ -9,7 +9,9 @@ class DiscountIconWidget extends StatelessWidget {
       height: 24,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [Image.asset('assets/images/discount_icon.png')],
+        children: [
+          Image.asset('assets/images/discount_icon.png', package: 'app_bar'),
+        ],
       ),
     );
   }

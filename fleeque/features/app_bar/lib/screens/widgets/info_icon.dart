@@ -9,7 +9,9 @@ class InfoIconWidget extends StatelessWidget {
       height: 26,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [Image.asset('assets/images/info_icon.png')],
+        children: [
+          Image.asset('assets/images/info_icon.png', package: 'app_bar'),
+        ],
       ),
     );
   }
