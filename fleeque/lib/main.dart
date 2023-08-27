@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-//доделать splash screen
 
 //app bar переместить в core ui
 

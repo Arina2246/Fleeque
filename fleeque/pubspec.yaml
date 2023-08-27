@@ -40,3 +40,14 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
+flutter_native_splash:
+  color: '#000000'
+  image_ios: assets/images/splash_logo_ios.png
+  image_android: assets/images/splash_logo_android.png
+
+  android_12:
+    image: assets/images/splash_logo_android12.png
+    color: '#000000'
+
+  android: true
+  ios: true
