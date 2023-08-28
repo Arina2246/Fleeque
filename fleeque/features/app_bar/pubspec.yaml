@@ -10,8 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  colors:
-    path: ../../core_UI/colors
+  core_ui:
+    path: ../../core_UI
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:colors/colors.dart';
+import 'package:core_ui/core_ui.dart';
 import 'package:carousel/carousel.dart';
 
 class StartButtonWidget extends StatelessWidget {

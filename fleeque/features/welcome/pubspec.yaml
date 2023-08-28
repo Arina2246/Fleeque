@@ -11,10 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^5.1.0
-  colors:
-    path: ../../core_UI/colors
+  core_ui:
+    path: ../../core_UI
   app_bar:
-    path: ../../core_UI/app_bar
+    path: ../../features/app_bar
   carousel:
     path: ../../features/carousel
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:colors/colors.dart';
+import 'package:core_ui/core_ui.dart';
 import 'package:carousel/screens/widgets/dots_indicator_widget.dart';
 import 'package:carousel/screens/widgets/skip_button_widget.dart';
 import 'package:carousel/screens/widgets/text_info_widget.dart';

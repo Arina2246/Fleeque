@@ -13,12 +13,12 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  colors:
-    path: core_UI/colors
-  routes:
-    path: core/routes
+  core_ui:
+    path: core_UI
+  core:
+    path: core
   app_bar:
-    path: core_UI/app_bar
+    path: features/app_bar
   login:
     path: features/login
   welcome:

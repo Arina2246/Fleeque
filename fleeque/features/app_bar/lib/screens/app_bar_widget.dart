@@ -3,7 +3,7 @@ import 'package:app_bar/screens/widgets/info_icon.dart';
 import 'package:app_bar/screens/widgets/logo.dart';
 import 'package:app_bar/screens/widgets/user_icon.dart';
 import 'package:app_bar/screens/widgets/wallet_icon.dart';
-import 'package:colors/colors.dart';
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {

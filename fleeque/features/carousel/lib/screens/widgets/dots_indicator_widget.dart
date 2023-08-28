@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:colors/colors.dart';
+import 'package:core_ui/core_ui.dart';
 
 class DotsIndicatorWidget extends StatelessWidget {
   final int dotsCount;
