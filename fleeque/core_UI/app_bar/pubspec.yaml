@@ -1,4 +1,4 @@
-name: welcome
+name: app_bar
 description: A new Flutter package project.
 version: 0.0.1
 homepage:
@@ -10,13 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^5.1.0
   colors:
     path: ../../core_UI/colors
-  app_bar:
-    path: ../../core_UI/app_bar
-  carousel:
-    path: ../../features/carousel
 
 dev_dependencies:
   flutter_test:
@@ -28,6 +23,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  # To add assets to your package, add an assets section, like this:
   assets:
     - assets/images/
   #

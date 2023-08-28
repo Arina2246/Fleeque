@@ -1,4 +1,4 @@
-import 'package:core/core.dart';
+import 'package:routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:login/login.dart';
 import 'package:welcome/welcome.dart';

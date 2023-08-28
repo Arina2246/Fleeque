@@ -13,8 +13,8 @@ dependencies:
   google_fonts: ^5.1.0
   carousel_slider: ^4.2.1
   dots_indicator: ^2.1.1
-  core_ui:
-    path: ../../core_UI/core_ui
+  colors:
+    path: ../../core_UI/colors
   login:
     path: ../../features/login
 

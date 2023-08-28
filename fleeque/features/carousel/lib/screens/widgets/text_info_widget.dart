@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:core_ui/core_ui.dart';
+import 'package:colors/colors.dart';
 
 class TextInfoWidget extends StatelessWidget {
   final String carouselText;
