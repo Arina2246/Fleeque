@@ -77,7 +77,6 @@ class _SignInScreen extends State<SignInScreen> {
             ChangeScreenTextWidget(
                 questionText: 'Don’t have an account ?',
                 buttonText: 'Sign Up!',
-                // callback: () => Navigator.pushNamed(context, signUpRoute)),
                 callback: () => Navigator.pushNamed(context, loginRoute,
                     arguments: signUpRoute)),
             const ForgotPasswordWidget(),
