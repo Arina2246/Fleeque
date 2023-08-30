@@ -1,6 +1,8 @@
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:login/login.dart';
+import 'package:login/screens/sign_in_screen.dart';
+import 'package:login/screens/sign_up_screen.dart';
 import 'package:welcome/welcome.dart';
 import 'package:carousel/carousel.dart';
 
@@ -16,7 +18,17 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     case loginRoute:
       return MaterialPageRoute(
-        builder: (_) => const LoginScreen(),
+        builder: (_) => LoginScreen(
+          router: settings.arguments.toString(),
+        ),
+      );
+    case signInRoute:
+      return MaterialPageRoute(
+        builder: (_) => const SignInScreen(),
+      );
+    case signUpRoute:
+      return MaterialPageRoute(
+        builder: (_) => const SignUpScreen(),
       );
     default:
       return MaterialPageRoute(

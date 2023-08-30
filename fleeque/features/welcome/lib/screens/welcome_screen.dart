@@ -1,8 +1,9 @@
 import 'package:app_bar/app_bar.dart';
+import 'package:core/core.dart';
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:welcome/screens/widgets/logo_widget.dart';
 import 'package:welcome/screens/widgets/reserved_rights_widget.dart';
-import 'package:welcome/screens/widgets/start_button_widget.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -35,13 +36,13 @@ class _WelcomeSplashPage extends State<WelcomeScreen> {
                 package: 'welcome'),
           ),
         ),
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Spacer(),
-            Spacer(),
-            Expanded(
+            const Spacer(),
+            const Spacer(),
+            const Expanded(
               flex: 2,
               child: LogoWidget(),
             ),
@@ -49,7 +50,18 @@ class _WelcomeSplashPage extends State<WelcomeScreen> {
               flex: 1,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [StartButtonWidget(), ReservedRightsWidget()],
+                children: [
+                  ElevatedButtonWidget(
+                    width: 247,
+                    borderColor: white,
+                    backgroundColor: white,
+                    textColor: black,
+                    text: 'GET STARTED',
+                    onPressed: () =>
+                        Navigator.pushNamed(context, carouselRoute),
+                  ),
+                  const ReservedRightsWidget(),
+                ],
               ),
             ),
           ],

@@ -46,4 +46,7 @@ class LoginServiceImpl implements LoginService {
   Future<void> signUp(UserEntity user) async =>
       auth.createUserWithEmailAndPassword(
           email: user.email!, password: user.password!);
+
+  @override
+  String errorLogin(Object error) => error.toString();
 }

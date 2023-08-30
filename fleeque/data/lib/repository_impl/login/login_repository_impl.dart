@@ -25,4 +25,7 @@ class LoginRepositoryImpl extends LoginRepository {
 
   @override
   Future<void> signUp(UserEntity user) async => dataSource.signUp(user);
+
+  @override
+  String errorLogin(Object error) => dataSource.errorLogin(error);
 }

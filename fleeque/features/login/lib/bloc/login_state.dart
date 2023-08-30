@@ -18,6 +18,9 @@ final class Unauthenticated extends LoginState {}
 
 final class Loading extends LoginState {}
 
-final class Failure extends LoginState {}
-
 final class Success extends LoginState {}
+
+final class ErrorLogin extends LoginState {
+  final Object message;
+  const ErrorLogin({required this.message});
+}

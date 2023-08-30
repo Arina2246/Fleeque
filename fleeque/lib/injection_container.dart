@@ -9,6 +9,7 @@ import 'package:domain/usecases/login/is_sign_in_usecase.dart';
 import 'package:domain/usecases/login/sign_in_usecase.dart';
 import 'package:domain/usecases/login/sign_out_useccase.dart';
 import 'package:domain/usecases/login/sign_up_usecase.dart';
+import 'package:domain/usecases/login/error_login_usecase.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:login/bloc/login_bloc.dart';
@@ -18,6 +19,7 @@ GetIt getIt = GetIt.I;
 Future<void> init() async {
   getIt.registerFactory<LoginBloc>(
     () => LoginBloc(
+      errorLoginUsecase: getIt.call(),
       getCurrentUidUseCase: getIt.call(),
       isSignInUseCase: getIt.call(),
       signOutUseCase: getIt.call(),
@@ -71,6 +73,11 @@ Future<void> init() async {
   );
   getIt.registerLazySingleton<IsSignInUseCase>(
     () => IsSignInUseCase(
+      repository: getIt.call(),
+    ),
+  );
+  getIt.registerLazySingleton<ErrorLoginUsecase>(
+    () => ErrorLoginUsecase(
       repository: getIt.call(),
     ),
   );

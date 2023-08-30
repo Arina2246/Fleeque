@@ -6,9 +6,3 @@ sealed class LoginEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
-
-// class AppStarted extends LoginEvent {}
-
-// class LoggedIn extends LoginEvent {}
-
-// class LoggedOut extends LoginEvent {}
