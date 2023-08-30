@@ -3,6 +3,8 @@ description: A new Flutter package project.
 version: 0.0.1
 homepage:
 
+publish_to: none
+
 environment:
   sdk: '>=3.0.6 <4.0.0'
   flutter: '>=1.17.0'
@@ -15,6 +17,8 @@ dependencies:
   dots_indicator: ^2.1.1
   core_ui:
     path: ../../core_UI
+  core:
+    path: ../../core
   login:
     path: ../../features/login
 

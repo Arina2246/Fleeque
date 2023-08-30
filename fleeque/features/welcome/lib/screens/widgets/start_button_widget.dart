@@ -1,3 +1,4 @@
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:core_ui/core_ui.dart';
@@ -22,12 +23,7 @@ class StartButtonWidget extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: () => Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const CarouselScreen(),
-          ),
-        ),
+        onPressed: () => Navigator.pushNamed(context, carouselRoute),
         child: Text(
           'GET STARTED',
           style: GoogleFonts.roboto(

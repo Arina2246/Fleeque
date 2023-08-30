@@ -1,7 +1,7 @@
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:core_ui/core_ui.dart';
-import 'package:login/login.dart';
 
 class SkipButtonWidget extends StatelessWidget {
   final bool isLast;
@@ -11,8 +11,7 @@ class SkipButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const LoginScreen()));
+        Navigator.pushNamed(context, loginRoute);
       },
       child: Text(
         isLast ? 'DONE' : 'SKIP',

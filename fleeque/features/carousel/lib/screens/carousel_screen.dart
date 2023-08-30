@@ -62,7 +62,7 @@ class _CarouselScreen extends State<CarouselScreen> {
                       Expanded(
                         flex: 1,
                         child: SkipButtonWidget(
-                            isLast: _currentPosition == carouselText.length
+                            isLast: _currentPosition == carouselText.length - 1
                                 ? true
                                 : false),
                       ),

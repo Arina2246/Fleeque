@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "634509425145",
+    "project_id": "fleeque-20bed",
+    "storage_bucket": "fleeque-20bed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634509425145:android:85a0b7ddc549164f54a528",
+        "android_client_info": {
+          "package_name": "com.example.fleeque"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634509425145-1n1vvmora80eoqhmt0n4snmuqgagepso.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwiapfkV5zGgvd7JxUJ_-bWBPZK3icUp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634509425145-1n1vvmora80eoqhmt0n4snmuqgagepso.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
