@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:domain/entities/login/login_entities.dart';
+import 'package:domain/usecases/login/forgot_password_usecase.dart';
 import 'package:domain/usecases/login/get_create_current_user_usecase.dart';
 import 'package:domain/usecases/login/get_current_UId_usecase.dart';
 import 'package:domain/usecases/login/is_sign_in_usecase.dart';
@@ -22,6 +23,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final SignInUseCase signInUseCase;
   final SignUpUseCase signUPUseCase;
   final GetCreateCurrentUserUsecase getCreateCurrentUserUseCase;
+  final ForgotPasswordUsecase forgotPasswordUseCase;
 
   LoginBloc({
     required this.errorLoginUsecase,
@@ -31,6 +33,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     required this.signInUseCase,
     required this.signUPUseCase,
     required this.getCreateCurrentUserUseCase,
+    required this.forgotPasswordUseCase,
   }) : super(LoginInitial());
 
   Future<void> init() async {
@@ -70,7 +73,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(Loading());
     try {
       await signInUseCase.call(user);
-      emit(Success());
+      emit(SuccessLogin());
     } on SocketException catch (_) {
       emit(ErrorLogin(message: _.message));
     } catch (_) {
@@ -84,7 +87,19 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     try {
       await signUPUseCase.call(user);
       await getCreateCurrentUserUseCase.call(user);
-      emit(Success());
+      emit(SuccessLogin());
+    } on SocketException catch (_) {
+      emit(ErrorLogin(message: _.message));
+    } catch (_) {
+      emit(ErrorLogin(message: _));
+    }
+  }
+
+  Future<void> submitForgotPassword({required String email}) async {
+    emit(Loading());
+    try {
+      await forgotPasswordUseCase.call(email);
+      emit(SuccessForgotPassword());
     } on SocketException catch (_) {
       emit(ErrorLogin(message: _.message));
     } catch (_) {

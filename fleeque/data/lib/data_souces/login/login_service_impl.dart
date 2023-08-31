@@ -49,4 +49,9 @@ class LoginServiceImpl implements LoginService {
 
   @override
   String errorLogin(Object error) => error.toString();
+
+  @override
+  Future<void> forgotPassword(String email) async {
+    await auth.sendPasswordResetEmail(email: email);
+  }
 }

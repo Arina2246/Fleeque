@@ -28,7 +28,7 @@ class LoginScreen extends StatelessWidget {
             return _body(router);
           }
 
-          if (loginState is Success) {
+          if (loginState is SuccessLogin) {
             BlocProvider.of<LoginBloc>(context).loggedIn();
           }
 

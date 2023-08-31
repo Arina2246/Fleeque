@@ -8,4 +8,5 @@ abstract class LoginRepository {
   Future<String> getCurrentUId();
   Future<void> getCreateCurrentUser(UserEntity user);
   String errorLogin(Object error);
+  Future<void> forgotPassword(String email);
 }

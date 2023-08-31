@@ -28,4 +28,8 @@ class LoginRepositoryImpl extends LoginRepository {
 
   @override
   String errorLogin(Object error) => dataSource.errorLogin(error);
+
+  @override
+  Future<void> forgotPassword(String email) async =>
+      dataSource.forgotPassword(email);
 }

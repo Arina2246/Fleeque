@@ -3,6 +3,7 @@ import 'package:data/data_souces/login/login_service.dart';
 import 'package:data/data_souces/login/login_service_impl.dart';
 import 'package:data/repository_impl/login/login_repository_impl.dart';
 import 'package:domain/repository/login/login_repository.dart';
+import 'package:domain/usecases/login/forgot_password_usecase.dart';
 import 'package:domain/usecases/login/get_create_current_user_usecase.dart';
 import 'package:domain/usecases/login/get_current_UId_usecase.dart';
 import 'package:domain/usecases/login/is_sign_in_usecase.dart';
@@ -26,6 +27,7 @@ Future<void> init() async {
       signInUseCase: getIt.call(),
       signUPUseCase: getIt.call(),
       getCreateCurrentUserUseCase: getIt.call(),
+      forgotPasswordUseCase: getIt.call(),
     ),
   );
 
@@ -78,6 +80,11 @@ Future<void> init() async {
   );
   getIt.registerLazySingleton<ErrorLoginUsecase>(
     () => ErrorLoginUsecase(
+      repository: getIt.call(),
+    ),
+  );
+  getIt.registerLazySingleton<ForgotPasswordUsecase>(
+    () => ForgotPasswordUsecase(
       repository: getIt.call(),
     ),
   );
