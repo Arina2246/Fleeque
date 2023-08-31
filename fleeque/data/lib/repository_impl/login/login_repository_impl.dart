@@ -32,4 +32,7 @@ class LoginRepositoryImpl extends LoginRepository {
   @override
   Future<void> forgotPassword(String email) async =>
       dataSource.forgotPassword(email);
+
+  @override
+  Future<void> signInWithGoogle() async => dataSource.signInWithGoogle();
 }

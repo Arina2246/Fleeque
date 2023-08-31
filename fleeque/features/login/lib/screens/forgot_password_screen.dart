@@ -47,7 +47,7 @@ class _ForgotPasswordScreen extends State<ForgotPasswordScreen> {
               flex: 2,
               child: Text(
                 'Enter the email address associated with your account'
-                'and we`ll send you a link to reset your email',
+                ' and we`ll send you a link to reset your email',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.montserrat(
                   fontSize: 24,

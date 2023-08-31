@@ -1,11 +1,17 @@
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:login/bloc/login_bloc.dart';
 
 class GoogleSignInButtonWidget extends StatelessWidget {
   const GoogleSignInButtonWidget({
     Key? key,
   }) : super(key: key);
+
+  void submitSignIn(BuildContext context) {
+    BlocProvider.of<LoginBloc>(context).submitGoogleSignIn();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +28,7 @@ class GoogleSignInButtonWidget extends StatelessWidget {
             ),
             elevation: 0,
           ),
-          onPressed: () => {},
+          onPressed: () => submitSignIn(context),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

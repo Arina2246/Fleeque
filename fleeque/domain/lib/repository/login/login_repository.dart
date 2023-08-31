@@ -9,4 +9,5 @@ abstract class LoginRepository {
   Future<void> getCreateCurrentUser(UserEntity user);
   String errorLogin(Object error);
   Future<void> forgotPassword(String email);
+  Future<void> signInWithGoogle();
 }

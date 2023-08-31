@@ -10,6 +10,7 @@ import 'package:domain/usecases/login/sign_in_usecase.dart';
 import 'package:domain/usecases/login/sign_out_useccase.dart';
 import 'package:domain/usecases/login/sign_up_usecase.dart';
 import 'package:domain/usecases/login/error_login_usecase.dart';
+import 'package:domain/usecases/login/sign_in_with_google_usecase.dart';
 import 'package:equatable/equatable.dart';
 
 part 'login_event.dart';
@@ -21,9 +22,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final IsSignInUseCase isSignInUseCase;
   final SignOutUseCase signOutUseCase;
   final SignInUseCase signInUseCase;
-  final SignUpUseCase signUPUseCase;
+  final SignUpUseCase signUpUseCase;
   final GetCreateCurrentUserUsecase getCreateCurrentUserUseCase;
   final ForgotPasswordUsecase forgotPasswordUseCase;
+  final SignInWithGoogleUsecase signInWithGoogleUsecase;
 
   LoginBloc({
     required this.errorLoginUsecase,
@@ -31,9 +33,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     required this.isSignInUseCase,
     required this.signOutUseCase,
     required this.signInUseCase,
-    required this.signUPUseCase,
+    required this.signUpUseCase,
     required this.getCreateCurrentUserUseCase,
     required this.forgotPasswordUseCase,
+    required this.signInWithGoogleUsecase,
   }) : super(LoginInitial());
 
   Future<void> init() async {
@@ -85,7 +88,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Future<void> submitSignUp({required UserEntity user}) async {
     emit(Loading());
     try {
-      await signUPUseCase.call(user);
+      await signUpUseCase.call(user);
       await getCreateCurrentUserUseCase.call(user);
       emit(SuccessLogin());
     } on SocketException catch (_) {
@@ -103,6 +106,19 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     } on SocketException catch (_) {
       emit(ErrorLogin(message: _.message));
     } catch (_) {
+      emit(ErrorLogin(message: _));
+    }
+  }
+
+  Future<void> submitGoogleSignIn() async {
+    emit(Loading());
+    try {
+      await signInWithGoogleUsecase.call();
+      emit(SuccessLogin());
+    } on SocketException catch (_) {
+      emit(ErrorLogin(message: _.message));
+    } catch (_) {
+      errorLoginUsecase.call(_);
       emit(ErrorLogin(message: _));
     }
   }

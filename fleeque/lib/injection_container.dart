@@ -7,6 +7,7 @@ import 'package:domain/usecases/login/forgot_password_usecase.dart';
 import 'package:domain/usecases/login/get_create_current_user_usecase.dart';
 import 'package:domain/usecases/login/get_current_UId_usecase.dart';
 import 'package:domain/usecases/login/is_sign_in_usecase.dart';
+import 'package:domain/usecases/login/sign_in_with_google_usecase.dart';
 import 'package:domain/usecases/login/sign_in_usecase.dart';
 import 'package:domain/usecases/login/sign_out_useccase.dart';
 import 'package:domain/usecases/login/sign_up_usecase.dart';
@@ -25,9 +26,10 @@ Future<void> init() async {
       isSignInUseCase: getIt.call(),
       signOutUseCase: getIt.call(),
       signInUseCase: getIt.call(),
-      signUPUseCase: getIt.call(),
+      signUpUseCase: getIt.call(),
       getCreateCurrentUserUseCase: getIt.call(),
       forgotPasswordUseCase: getIt.call(),
+      signInWithGoogleUsecase: getIt.call(),
     ),
   );
 
@@ -85,6 +87,11 @@ Future<void> init() async {
   );
   getIt.registerLazySingleton<ForgotPasswordUsecase>(
     () => ForgotPasswordUsecase(
+      repository: getIt.call(),
+    ),
+  );
+  getIt.registerLazySingleton<SignInWithGoogleUsecase>(
+    () => SignInWithGoogleUsecase(
       repository: getIt.call(),
     ),
   );

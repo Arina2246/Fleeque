@@ -3,6 +3,7 @@ import 'package:data/data_souces/login/login_service.dart';
 import 'package:data/model/login/login_model.dart';
 import 'package:domain/entities/login/login_entities.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginServiceImpl implements LoginService {
   final FirebaseAuth auth;
@@ -53,5 +54,17 @@ class LoginServiceImpl implements LoginService {
   @override
   Future<void> forgotPassword(String email) async {
     await auth.sendPasswordResetEmail(email: email);
+  }
+
+  @override
+  Future<void> signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+
+    await auth.signInWithCredential(credential);
   }
 }
