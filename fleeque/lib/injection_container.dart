@@ -5,7 +5,7 @@ import 'package:data/repository_impl/login/login_repository_impl.dart';
 import 'package:domain/repository/login/login_repository.dart';
 import 'package:domain/usecases/login/forgot_password_usecase.dart';
 import 'package:domain/usecases/login/get_create_current_user_usecase.dart';
-import 'package:domain/usecases/login/get_current_UId_usecase.dart';
+import 'package:domain/usecases/login/get_current_uid_usecase.dart';
 import 'package:domain/usecases/login/is_sign_in_usecase.dart';
 import 'package:domain/usecases/login/sign_in_with_google_usecase.dart';
 import 'package:domain/usecases/login/sign_in_usecase.dart';

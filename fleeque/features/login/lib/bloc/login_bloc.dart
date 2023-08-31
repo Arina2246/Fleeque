@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:domain/entities/login/login_entities.dart';
 import 'package:domain/usecases/login/forgot_password_usecase.dart';
 import 'package:domain/usecases/login/get_create_current_user_usecase.dart';
-import 'package:domain/usecases/login/get_current_UId_usecase.dart';
+import 'package:domain/usecases/login/get_current_uid_usecase.dart';
 import 'package:domain/usecases/login/is_sign_in_usecase.dart';
 import 'package:domain/usecases/login/sign_in_usecase.dart';
 import 'package:domain/usecases/login/sign_out_useccase.dart';
@@ -54,6 +54,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   Future<void> loggedIn() async {
+    emit(Loading());
     try {
       final uid = await getCurrentUidUseCase.call();
       emit(Authenticated(uid: uid));
@@ -63,7 +64,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   Future<void> loggedOut() async {
-    print('logged out');
+    emit(Loading());
     try {
       await signOutUseCase.call();
       emit(Unauthenticated());

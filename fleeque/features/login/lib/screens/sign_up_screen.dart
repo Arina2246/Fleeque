@@ -8,6 +8,7 @@ import 'package:login/screens/widgets/change_screen_text_widget.dart';
 import 'package:login/screens/widgets/error_login_widget.dart';
 import 'package:login/screens/widgets/google_sign_in_button_widget.dart';
 import 'package:login/screens/widgets/input_widget.dart';
+import 'package:login/screens/widgets/loading_widget.dart';
 import 'package:login/screens/widgets/text_widget.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -54,10 +55,12 @@ class _SignUpScreen extends State<SignUpScreen> {
           children: [
             const Spacer(),
             const Expanded(
-                flex: 6,
-                child: TextWidget(
-                  text: 'Register',
-                )),
+              flex: 6,
+              child: TextWidget(
+                text: 'Register',
+              ),
+            ),
+            const LoadingWidget(),
             const Spacer(),
             Expanded(
               flex: 1,

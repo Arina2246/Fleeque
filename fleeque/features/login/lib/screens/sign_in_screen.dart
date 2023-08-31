@@ -6,9 +6,10 @@ import 'package:login/bloc/login_bloc.dart';
 import 'package:login/screens/widgets/button_widget.dart';
 import 'package:login/screens/widgets/change_screen_text_widget.dart';
 import 'package:login/screens/widgets/error_login_widget.dart';
-import 'package:login/screens/widgets/forgot_password_widget.dart';
+import 'package:login/screens/widgets/forgot_password/forgot_password_widget.dart';
 import 'package:login/screens/widgets/google_sign_in_button_widget.dart';
 import 'package:login/screens/widgets/input_widget.dart';
+import 'package:login/screens/widgets/loading_widget.dart';
 import 'package:login/screens/widgets/text_widget.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -57,6 +58,7 @@ class _SignInScreen extends State<SignInScreen> {
                   text: 'Login',
                 )),
             const Spacer(),
+            const LoadingWidget(),
             Expanded(
               flex: 1,
               child: InputWidget(

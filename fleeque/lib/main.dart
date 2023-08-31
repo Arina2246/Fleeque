@@ -34,6 +34,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-// подклчить гугл аутентификацию  и загрузку

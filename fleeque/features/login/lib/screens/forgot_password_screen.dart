@@ -7,7 +7,8 @@ import 'package:login/screens/widgets/button_widget.dart';
 import 'package:login/screens/widgets/change_screen_text_widget.dart';
 import 'package:login/screens/widgets/error_login_widget.dart';
 import 'package:login/screens/widgets/input_widget.dart';
-import 'package:login/screens/widgets/success_forgot_password_widget.dart';
+import 'package:login/screens/widgets/loading_widget.dart';
+import 'package:login/screens/widgets/forgot_password/success_forgot_password_widget.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
@@ -55,6 +56,7 @@ class _ForgotPasswordScreen extends State<ForgotPasswordScreen> {
                 ),
               ),
             ),
+            const LoadingWidget(),
             const Spacer(),
             Expanded(
               flex: 1,
