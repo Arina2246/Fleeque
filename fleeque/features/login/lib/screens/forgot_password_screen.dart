@@ -71,7 +71,8 @@ class _ForgotPasswordScreen extends State<ForgotPasswordScreen> {
             ChangeScreenTextWidget(
                 questionText: '',
                 buttonText: 'Return to previous page',
-                callback: () => Navigator.pushNamed(context, loginRoute,
+                callback: () => Navigator.pushNamed(
+                    context, authenticationRoute,
                     arguments: signInRoute)),
             const Spacer(),
             ButtonWidget(

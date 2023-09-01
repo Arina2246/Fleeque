@@ -11,7 +11,8 @@ class SkipButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        Navigator.pushNamed(context, loginRoute, arguments: signInRoute);
+        Navigator.pushNamed(context, authenticationRoute,
+            arguments: signInRoute);
       },
       child: Text(
         isLast ? 'DONE' : 'SKIP',

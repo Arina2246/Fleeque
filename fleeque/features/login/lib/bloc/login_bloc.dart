@@ -90,7 +90,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(Loading());
     try {
       await signUpUseCase.call(user);
-      await getCreateCurrentUserUseCase.call(user);
       emit(SuccessLogin());
     } on SocketException catch (_) {
       emit(ErrorLogin(message: _.message));

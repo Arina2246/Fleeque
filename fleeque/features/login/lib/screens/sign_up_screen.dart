@@ -90,7 +90,7 @@ class _SignUpScreen extends State<SignUpScreen> {
             ChangeScreenTextWidget(
               questionText: 'Already have an account ?',
               buttonText: 'Sign In!',
-              callback: () => Navigator.pushNamed(context, loginRoute,
+              callback: () => Navigator.pushNamed(context, authenticationRoute,
                   arguments: signInRoute),
             ),
             const Spacer(),

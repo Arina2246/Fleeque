@@ -6,9 +6,9 @@ import 'package:login/screens/home_screen.dart';
 import 'package:login/screens/sign_in_screen.dart';
 import 'package:login/screens/sign_up_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginForm extends StatelessWidget {
   final String router;
-  const LoginScreen({Key? key, required this.router}) : super(key: key);
+  const LoginForm({Key? key, required this.router}) : super(key: key);
 
   _body(String router) {
     return router == signInRoute ? const SignInScreen() : const SignUpScreen();
