@@ -19,8 +19,6 @@ dependencies:
     path: ../../core_UI
   core:
     path: ../../core
-  login:
-    path: ../../features/login
 
 dev_dependencies:
   flutter_test:
