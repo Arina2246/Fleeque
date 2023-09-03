@@ -1,9 +1,8 @@
+import 'package:authentification/forgot_password_page/screens/forgot_password_screen.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
-import 'package:login/login.dart';
-import 'package:login/screens/sign_in_screen.dart';
-import 'package:login/screens/sign_up_screen.dart';
-import 'package:login/screens/forgot_password_screen.dart';
+import 'package:authentification/sign_in_page/screens/sign_in_screen.dart';
+import 'package:authentification/sign_up_page/screens/sign_up_screen.dart';
 import 'package:welcome/welcome.dart';
 import 'package:carousel/carousel.dart';
 
@@ -16,12 +15,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case carouselRoute:
       return MaterialPageRoute(
         builder: (_) => const CarouselScreen(),
-      );
-    case loginRoute:
-      return MaterialPageRoute(
-        builder: (_) => LoginScreen(
-          router: settings.arguments.toString(),
-        ),
       );
     case signInRoute:
       return MaterialPageRoute(
@@ -47,3 +40,5 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
   }
 }
+
+// картинка кнопки гугла

@@ -24,12 +24,12 @@ dependencies:
     path: domain
   app_bar:
     path: features/app_bar
-  login:
-    path: features/login
   welcome:
     path: features/welcome
   carousel:
     path: features/carousel
+  authentification:
+    path: features/authentification
   firebase_auth: ^4.8.0
   cloud_firestore: ^4.9.0
   get_it: ^7.6.0
