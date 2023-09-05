@@ -22,6 +22,7 @@ class _WelcomeSplashPage extends State<WelcomeScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBarWidget(
+        backgroundColor: transparent,
         isOnline: isOnline,
         isDiscontShown: isDiscontShown,
         isWalletShown: isWalletShown,

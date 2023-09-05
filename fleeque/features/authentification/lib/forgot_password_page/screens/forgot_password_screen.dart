@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:domain/usecases/authentification/error_usecase.dart';
 
-import 'package:data/di/authentification/di.dart' as di;
+import 'package:data/di/di.dart' as di;
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);

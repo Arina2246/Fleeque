@@ -9,7 +9,7 @@ import 'package:domain/usecases/authentification/sign_in_usecase.dart';
 import 'package:domain/usecases/authentification/sign_in_with_google_usecase.dart';
 import 'package:domain/usecases/authentification/sign_out_usecase.dart';
 
-import 'package:data/di/authentification/di.dart' as di;
+import 'package:data/di/di.dart' as di;
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);

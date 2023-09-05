@@ -9,7 +9,7 @@ import 'package:domain/usecases/authentification/get_current_uid_usecase.dart';
 import 'package:domain/usecases/authentification/is_sign_in_usecase.dart';
 import 'package:domain/usecases/authentification/sign_out_usecase.dart';
 
-import 'package:data/di/authentification/di.dart' as di;
+import 'package:data/di/di.dart' as di;
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);

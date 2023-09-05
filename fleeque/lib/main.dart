@@ -2,7 +2,7 @@ import 'package:core/core.dart';
 import 'package:fleeque/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:data/di/authentification/di.dart' as di;
+import 'package:data/di/di.dart' as di;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,8 +20,13 @@ class MyApp extends StatelessWidget {
       title: 'Fleeque',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      initialRoute: welcomeRoute,
+      // initialRoute: welcomeRoute,
+      initialRoute: homeRoute,
       onGenerateRoute: generateRoute,
     );
   }
 }
+
+
+//доделать верстку
+// сделать навигацию

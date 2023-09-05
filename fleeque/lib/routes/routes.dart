@@ -3,6 +3,7 @@ import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:authentification/sign_in_page/screens/sign_in_screen.dart';
 import 'package:authentification/sign_up_page/screens/sign_up_screen.dart';
+import 'package:home/screens/home_screen.dart';
 import 'package:welcome/welcome.dart';
 import 'package:carousel/carousel.dart';
 
@@ -27,6 +28,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case forgotPasswordRoute:
       return MaterialPageRoute(
         builder: (_) => const ForgotPasswordScreen(),
+      );
+    case homeRoute:
+      return MaterialPageRoute(
+        builder: (_) => const HomeScreen(),
       );
     default:
       return MaterialPageRoute(
