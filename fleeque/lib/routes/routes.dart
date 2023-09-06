@@ -11,30 +11,37 @@ Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case welcomeRoute:
       return MaterialPageRoute(
+        settings: settings,
         builder: (_) => const WelcomeScreen(),
       );
     case carouselRoute:
       return MaterialPageRoute(
+        settings: settings,
         builder: (_) => const CarouselScreen(),
       );
     case signInRoute:
       return MaterialPageRoute(
+        settings: settings,
         builder: (_) => const SignInScreen(),
       );
     case signUpRoute:
       return MaterialPageRoute(
+        settings: settings,
         builder: (_) => const SignUpScreen(),
       );
     case forgotPasswordRoute:
       return MaterialPageRoute(
+        settings: settings,
         builder: (_) => const ForgotPasswordScreen(),
       );
     case homeRoute:
       return MaterialPageRoute(
+        settings: settings,
         builder: (_) => const HomeScreen(),
       );
     default:
       return MaterialPageRoute(
+        settings: settings,
         builder: (_) => Scaffold(
           body: Center(
             child: Text(

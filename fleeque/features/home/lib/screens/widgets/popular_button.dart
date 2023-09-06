@@ -15,7 +15,7 @@ class PopularButtonWidget extends StatelessWidget {
           backgroundColor: black,
           shadowColor: transparent,
           shape: RoundedRectangleBorder(
-            side: BorderSide(color: borderColor),
+            side: const BorderSide(color: borderColor),
             borderRadius: BorderRadius.circular(30),
           ),
           elevation: 0,

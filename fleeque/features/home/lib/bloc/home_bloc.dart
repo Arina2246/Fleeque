@@ -22,7 +22,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             await getInfluencersCollectionUsecase.call();
         emit(Success(influencersCollection: influencersCollection));
       } catch (e) {
-        print(e);
         emit(Error());
       }
     });

@@ -30,6 +30,8 @@ dependencies:
     path: features/carousel
   authentification:
     path: features/authentification
+  nav_bar:
+    path: features/nav_bar
   home:
     path: features/home
   firebase_auth: ^4.8.0
