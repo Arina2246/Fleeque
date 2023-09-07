@@ -22,13 +22,8 @@ class MyApp extends StatelessWidget {
       title: 'Fleeque',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      // initialRoute: welcomeRoute,
-      initialRoute: influencersRoute,
+      initialRoute: welcomeRoute,
       onGenerateRoute: generateRoute,
     );
   }
 }
-
-
-//сделать переключение с логина на home page
-

@@ -24,6 +24,8 @@ dependencies:
     path: ../../domain
   data:
     path: ../../data
+  home:
+    path: ../../features/home
   flutter_bloc: ^8.1.3
   bloc: any
   equatable: any

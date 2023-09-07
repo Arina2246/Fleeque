@@ -3,7 +3,6 @@ import 'package:authentification/sign_in_page/screens/widgets/forgot_password.da
 import 'package:authentification/widgets/google_sign_in_button.dart';
 import 'package:authentification/sign_in_page/screens/widgets/loading.dart';
 import 'package:authentification/widgets/change_page.dart';
-import 'package:authentification/widgets/home_screen.dart';
 import 'package:authentification/widgets/intro_text.dart';
 import 'package:authentification/widgets/submit_button.dart';
 import 'package:authentification/widgets/text_input.dart';
@@ -71,10 +70,13 @@ class _SignInForm extends State<SignInForm> {
       body: BlocBuilder<SignInBloc, SignInState>(
         builder: (context, state) {
           if (state is Authenticated) {
-            return HomeScreen(
-              callback: () => logOut(),
-              uid: state.uid,
+            Future.microtask(
+              () => Navigator.pushNamed(context, homeRoute),
             );
+            // return HomeScreen(
+            //   callback: () => logOut(),
+            //   uid: state.uid,
+            // );
           }
           if (state is Unauthenticated) {
             return _body();
