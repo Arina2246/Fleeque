@@ -13,16 +13,17 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        TextButton(
-          onPressed: () {
-            callback();
-          },
-          child: Text('Log Out user $uid'),
-        ),
-      ],
-    ));
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextButton(
+            onPressed: () {
+              callback();
+            },
+            child: Text('Log Out user $uid'),
+          ),
+        ],
+      ),
+    );
   }
 }

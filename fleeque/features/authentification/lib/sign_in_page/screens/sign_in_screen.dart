@@ -17,15 +17,15 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => SignInBloc(
-              errorAuthentificationUsecase:
-                  di.sl<ErrorAuthentificationUsecase>(),
-              getCurrentUidUseCase: di.sl<GetCurrentUidUseCase>(),
-              isSignInUseCase: di.sl<IsSignInUseCase>(),
-              signOutUseCase: di.sl<SignOutUseCase>(),
-              signInUseCase: di.sl<SignInUseCase>(),
-              signInWithGoogleUsecase: di.sl<SignInWithGoogleUsecase>(),
-            ),
-        child: const SignInForm());
+      create: (context) => SignInBloc(
+        errorAuthentificationUsecase: di.sl<ErrorAuthentificationUsecase>(),
+        getCurrentUidUseCase: di.sl<GetCurrentUidUseCase>(),
+        isSignInUseCase: di.sl<IsSignInUseCase>(),
+        signOutUseCase: di.sl<SignOutUseCase>(),
+        signInUseCase: di.sl<SignInUseCase>(),
+        signInWithGoogleUsecase: di.sl<SignInWithGoogleUsecase>(),
+      ),
+      child: const SignInForm(),
+    );
   }
 }

@@ -42,7 +42,11 @@ class InfluencerListCardWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const RegularTextWidget(text: 'FOLLOWERS', color: black),
+                  const RegularTextWidget(
+                    text: 'FOLLOWERS',
+                    color: black,
+                    textAlign: TextAlign.left,
+                  ),
                   Text(
                     formatFollowersCount(influencerData.followers),
                     style: GoogleFonts.roboto(
@@ -57,7 +61,11 @@ class InfluencerListCardWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const RegularTextWidget(text: 'POSTS', color: black),
+                  const RegularTextWidget(
+                    text: 'POSTS',
+                    color: black,
+                    textAlign: TextAlign.left,
+                  ),
                   Text(
                     influencerData.posts.toString(),
                     style: GoogleFonts.roboto(

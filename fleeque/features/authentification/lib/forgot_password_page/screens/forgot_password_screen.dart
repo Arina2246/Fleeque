@@ -13,11 +13,11 @@ class ForgotPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => ForgotPasswordBloc(
-              forgotPasswordUsecase: di.sl<ForgotPasswordUsecase>(),
-              errorAuthentificationUsecase:
-                  di.sl<ErrorAuthentificationUsecase>(),
-            ),
-        child: const ForgotPasswordForm());
+      create: (context) => ForgotPasswordBloc(
+        forgotPasswordUsecase: di.sl<ForgotPasswordUsecase>(),
+        errorAuthentificationUsecase: di.sl<ErrorAuthentificationUsecase>(),
+      ),
+      child: const ForgotPasswordForm(),
+    );
   }
 }

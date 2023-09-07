@@ -14,43 +14,44 @@ class GoogleSignInButtonWidget extends StatelessWidget {
       width: 343,
       height: 60,
       child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: transparent,
-            shadowColor: transparent,
-            shape: RoundedRectangleBorder(
-              side: const BorderSide(color: borderColor),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            elevation: 0,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: transparent,
+          shadowColor: transparent,
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(color: borderColor),
+            borderRadius: BorderRadius.circular(10),
           ),
-          onPressed: () => callback(),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                flex: 16,
-                child: Text(
-                  'Sign in with Google',
-                  style: GoogleFonts.roboto(
-                    letterSpacing: .8,
-                    color: black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                  ),
+          elevation: 0,
+        ),
+        onPressed: () => callback(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              flex: 16,
+              child: Text(
+                'Sign in with Google',
+                style: GoogleFonts.roboto(
+                  letterSpacing: .8,
+                  color: black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
-              Expanded(
-                flex: 3,
-                child: Image.asset('assets/images/line_icon.png',
-                    package: 'authentification'),
-              ),
-              Expanded(
-                flex: 2,
-                child: Image.asset('assets/images/google_icon.png',
-                    package: 'authentification'),
-              )
-            ],
-          )),
+            ),
+            Expanded(
+              flex: 3,
+              child: Image.asset('assets/images/line_icon.png',
+                  package: 'authentification'),
+            ),
+            Expanded(
+              flex: 2,
+              child: Image.asset('assets/images/google_icon.png',
+                  package: 'authentification'),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

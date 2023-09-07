@@ -38,6 +38,8 @@ dependencies:
     path: features/influencers
   about:
     path: features/about
+  contact:
+    path: features/contact
   firebase_auth: ^4.8.0
   cloud_firestore: ^4.9.0
   get_it: ^7.6.0

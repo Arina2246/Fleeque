@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:domain/entities/influencers/influencers_entities.dart';
 import 'package:flutter/material.dart';
-import 'package:home/screens/widgets/carousel_slider/carousel_card.dart';
+import 'package:influencers/screens/widgets/carousel_slider/carousel_card.dart';
 
 class CarouselSliderWidget extends StatelessWidget {
   final List<InfluencerEntity> influencersCollection;
@@ -12,7 +12,7 @@ class CarouselSliderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
-        height: 389.0,
+        height: 179.0,
         enableInfiniteScroll: false,
       ),
       items: influencersCollection.map(

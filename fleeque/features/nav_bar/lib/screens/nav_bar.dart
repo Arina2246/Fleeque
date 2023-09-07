@@ -43,23 +43,5 @@ class NavBarWidget extends StatelessWidget {
         ],
       ),
     );
-
-    //   onTap: (index) {
-    //     switch (index) {
-    //       case 0:
-    //         Navigator.pushNamed(context, "/home");
-    //         break;
-    //       case 1:
-    //         Navigator.pushNamed(context, "/influencers");
-    //         break;
-    //       case 2:
-    //         Navigator.pushNamed(context, "/about");
-    //         break;
-    //       case 3:
-    //         Navigator.pushNamed(context, "/contact");
-    //         break;
-    //     }
-    //   },
-    // )
   }
 }

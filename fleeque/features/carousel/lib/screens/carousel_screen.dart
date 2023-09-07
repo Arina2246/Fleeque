@@ -20,7 +20,9 @@ class _CarouselScreen extends State<CarouselScreen> {
   int _currentPosition = 0;
 
   void _handlePageTap(double pos) {
-    setState(() => _currentPosition = pos.toInt());
+    setState(
+      () => _currentPosition = pos.toInt(),
+    );
     buttonCarouselController.animateToPage(_currentPosition);
   }
 

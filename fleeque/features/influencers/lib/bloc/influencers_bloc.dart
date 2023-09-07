@@ -1,21 +1,20 @@
 import 'package:bloc/bloc.dart';
 import 'package:domain/entities/influencers/influencers_entities.dart';
-import 'package:equatable/equatable.dart';
-
 import 'package:domain/usecases/influencers/get_download_url_usecase.dart';
 import 'package:domain/usecases/influencers/get_influencers_collection_usecase.dart';
+import 'package:equatable/equatable.dart';
 
-part 'home_event.dart';
-part 'home_state.dart';
+part 'influencers_event.dart';
+part 'influencers_state.dart';
 
-class HomeBloc extends Bloc<HomeEvent, HomeState> {
+class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
   final GetDownloadUrlUsecase getDownloadUrlUsecase;
   final GetInfluencersCollectionUsecase getInfluencersCollectionUsecase;
-  HomeBloc({
+  InfluencersBloc({
     required this.getDownloadUrlUsecase,
     required this.getInfluencersCollectionUsecase,
   }) : super(
-          HomeInitial(),
+          InfluencersInitial(),
         ) {
     on<Init>(
       (event, emit) async {

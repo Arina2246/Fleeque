@@ -82,6 +82,7 @@ class AboutScreen extends StatelessWidget {
             height: 15,
           ),
           RegularTextWidget(
+              textAlign: TextAlign.left,
               text: 'if  dont find them just let us know and '
                   'we will make sure they join Fleeque soon',
               color: black),
@@ -108,6 +109,7 @@ class AboutScreen extends StatelessWidget {
             height: 50,
           ),
           RegularTextWidget(
+              textAlign: TextAlign.left,
               text: 'Remember, here at fleeque its a bit of a first '
                   'come first serve policy so make sue you that you`re quick.',
               color: black),
@@ -115,6 +117,7 @@ class AboutScreen extends StatelessWidget {
             height: 15,
           ),
           RegularTextWidget(
+              textAlign: TextAlign.left,
               text:
                   'Each influencer will only do 10 services month so you better be quick to join.',
               color: black),

@@ -32,10 +32,12 @@ class CardTextWidget extends StatelessWidget {
           ),
           const Spacer(),
           RegularTextWidget(
+            textAlign: TextAlign.left,
             text: '${formatFollowersCount(followers).toString()} FOLLOWERS',
             color: white,
           ),
           RegularTextWidget(
+            textAlign: TextAlign.left,
             text: '${posts.toString()} POSTS',
             color: white,
           ),

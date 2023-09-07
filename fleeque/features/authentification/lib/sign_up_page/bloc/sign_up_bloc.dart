@@ -27,62 +27,108 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     required this.isSignInUseCase,
     required this.signOutUseCase,
     required this.signInWithGoogleUsecase,
-  }) : super(SignUpInitial()) {
-    on<Init>((event, emit) async {
-      try {
-        final isSignIn = await isSignInUseCase.call();
-        if (isSignIn) {
-          final uid = await getCurrentUidUseCase.call();
-          emit(Authenticated(uid: uid));
-        } else {
-          emit(Unauthenticated());
+  }) : super(
+          SignUpInitial(),
+        ) {
+    on<Init>(
+      (event, emit) async {
+        try {
+          final isSignIn = await isSignInUseCase.call();
+          if (isSignIn) {
+            final uid = await getCurrentUidUseCase.call();
+            emit(
+              Authenticated(uid: uid),
+            );
+          } else {
+            emit(
+              Unauthenticated(),
+            );
+          }
+        } on SocketException catch (_) {
+          emit(
+            Unauthenticated(),
+          );
         }
-      } on SocketException catch (_) {
-        emit(Unauthenticated());
-      }
-    });
-    on<LoggedIn>((event, emit) async {
-      emit(Loading());
-      try {
-        final uid = await getCurrentUidUseCase.call();
-        emit(Authenticated(uid: uid));
-      } on SocketException catch (_) {
-        emit(Unauthenticated());
-      }
-    });
+      },
+    );
+    on<LoggedIn>(
+      (event, emit) async {
+        emit(
+          Loading(),
+        );
+        try {
+          final uid = await getCurrentUidUseCase.call();
+          emit(
+            Authenticated(uid: uid),
+          );
+        } on SocketException catch (_) {
+          emit(
+            Unauthenticated(),
+          );
+        }
+      },
+    );
 
-    on<LoggedOut>((event, emit) async {
-      emit(Loading());
-      try {
-        await signOutUseCase.call();
-        emit(Unauthenticated());
-      } on SocketException catch (_) {
-        emit(Unauthenticated());
-      }
-    });
-    on<SubmitSignUp>((event, emit) async {
-      emit(Loading());
-      try {
-        await signUpUseCase.call(event.user);
-        emit(Success());
-      } on SocketException catch (_) {
-        emit(Error(message: _.message));
-      } catch (_) {
-        errorAuthentificationUsecase.call(_);
-        emit(Error(message: _));
-      }
-    });
-    on<SubmitSignUpGoogle>((event, emit) async {
-      emit(Loading());
-      try {
-        await signInWithGoogleUsecase.call();
-        emit(Success());
-      } on SocketException catch (_) {
-        emit(Error(message: _.message));
-      } catch (_) {
-        errorAuthentificationUsecase.call(_);
-        emit(Error(message: _));
-      }
-    });
+    on<LoggedOut>(
+      (event, emit) async {
+        emit(
+          Loading(),
+        );
+        try {
+          await signOutUseCase.call();
+          emit(
+            Unauthenticated(),
+          );
+        } on SocketException catch (_) {
+          emit(
+            Unauthenticated(),
+          );
+        }
+      },
+    );
+    on<SubmitSignUp>(
+      (event, emit) async {
+        emit(
+          Loading(),
+        );
+        try {
+          await signUpUseCase.call(event.user);
+          emit(
+            Success(),
+          );
+        } on SocketException catch (_) {
+          emit(
+            Error(message: _.message),
+          );
+        } catch (_) {
+          errorAuthentificationUsecase.call(_);
+          emit(
+            Error(message: _),
+          );
+        }
+      },
+    );
+    on<SubmitSignUpGoogle>(
+      (event, emit) async {
+        emit(
+          Loading(),
+        );
+        try {
+          await signInWithGoogleUsecase.call();
+          emit(
+            Success(),
+          );
+        } on SocketException catch (_) {
+          emit(
+            Error(message: _.message),
+          );
+        } catch (_) {
+          errorAuthentificationUsecase.call(_);
+          emit(
+            Error(message: _),
+          );
+        }
+      },
+    );
   }
 }

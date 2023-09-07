@@ -46,11 +46,12 @@ class _ForgotPasswordForm extends State<ForgotPasswordForm> {
           children: [
             const Spacer(),
             const Expanded(
-                flex: 2,
-                child: IntroTextWidget(
-                  text: 'Enter the email address associated with your account'
-                      ' and we`ll send you a link to reset your email',
-                )),
+              flex: 2,
+              child: IntroTextWidget(
+                text: 'Enter the email address associated with your account'
+                    ' and we`ll send you a link to reset your email',
+              ),
+            ),
             const LoadingWidget(),
             const Spacer(),
             Expanded(
@@ -64,16 +65,18 @@ class _ForgotPasswordForm extends State<ForgotPasswordForm> {
             const ErrorForgotPasswordWidget(),
             const SucessForgotPasswordWidget(),
             ChangePageWidget(
-                questionText: '',
-                buttonText: 'Return to previous page',
-                callback: () => Navigator.pushNamed(
-                      context,
-                      signInRoute,
-                    )),
+              questionText: '',
+              buttonText: 'Return to previous page',
+              callback: () => Navigator.pushNamed(
+                context,
+                signInRoute,
+              ),
+            ),
             const Spacer(),
             SubmitButtonWidget(
-                text: 'SEND MAIL',
-                callback: () => submitForgotPassword(context)),
+              text: 'SEND MAIL',
+              callback: () => submitForgotPassword(context),
+            ),
             const Spacer(),
           ],
         ),

@@ -45,7 +45,9 @@ class _SignUpForm extends State<SignUpForm> {
   }
 
   void submitSignUpGoogle() {
-    BlocProvider.of<SignUpBloc>(context).add(SubmitSignUpGoogle());
+    BlocProvider.of<SignUpBloc>(context).add(
+      SubmitSignUpGoogle(),
+    );
   }
 
   void logOut() {
@@ -91,10 +93,11 @@ class _SignUpForm extends State<SignUpForm> {
           children: [
             const Spacer(),
             const Expanded(
-                flex: 6,
-                child: IntroTextWidget(
-                  text: 'Register with your credentials',
-                )),
+              flex: 6,
+              child: IntroTextWidget(
+                text: 'Register with your credentials',
+              ),
+            ),
             const LoadingWidget(),
             const Spacer(),
             Expanded(
@@ -129,7 +132,9 @@ class _SignUpForm extends State<SignUpForm> {
             ),
             const Spacer(),
             SubmitButtonWidget(
-                text: 'REGISTER', callback: () => submitSignUp()),
+              text: 'REGISTER',
+              callback: () => submitSignUp(),
+            ),
             const Spacer(),
           ],
         ),

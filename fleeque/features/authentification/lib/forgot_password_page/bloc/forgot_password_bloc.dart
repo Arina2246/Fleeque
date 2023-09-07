@@ -16,18 +16,28 @@ class ForgotPasswordBloc
   ForgotPasswordBloc(
       {required this.forgotPasswordUsecase,
       required this.errorAuthentificationUsecase})
-      : super(ForgotPasswordInitial()) {
+      : super(
+          ForgotPasswordInitial(),
+        ) {
     on<SubmitForgotPassword>((event, emit) async {
-      emit(Loading());
+      emit(
+        Loading(),
+      );
 
       try {
         await forgotPasswordUsecase.call(event.email);
-        emit(Success());
+        emit(
+          Success(),
+        );
       } on SocketException catch (_) {
-        emit(Error(message: _.message));
+        emit(
+          Error(message: _.message),
+        );
       } catch (_) {
         errorAuthentificationUsecase.call(_);
-        emit(Error(message: _));
+        emit(
+          Error(message: _),
+        );
       }
     });
   }

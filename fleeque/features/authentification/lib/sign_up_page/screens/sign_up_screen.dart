@@ -17,15 +17,15 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => SignUpBloc(
-              errorAuthentificationUsecase:
-                  di.sl<ErrorAuthentificationUsecase>(),
-              getCurrentUidUseCase: di.sl<GetCurrentUidUseCase>(),
-              isSignInUseCase: di.sl<IsSignInUseCase>(),
-              signOutUseCase: di.sl<SignOutUseCase>(),
-              signUpUseCase: di.sl<SignUpUseCase>(),
-              signInWithGoogleUsecase: di.sl<SignInWithGoogleUsecase>(),
-            ),
-        child: const SignUpForm());
+      create: (context) => SignUpBloc(
+        errorAuthentificationUsecase: di.sl<ErrorAuthentificationUsecase>(),
+        getCurrentUidUseCase: di.sl<GetCurrentUidUseCase>(),
+        isSignInUseCase: di.sl<IsSignInUseCase>(),
+        signOutUseCase: di.sl<SignOutUseCase>(),
+        signUpUseCase: di.sl<SignUpUseCase>(),
+        signInWithGoogleUsecase: di.sl<SignInWithGoogleUsecase>(),
+      ),
+      child: const SignUpForm(),
+    );
   }
 }

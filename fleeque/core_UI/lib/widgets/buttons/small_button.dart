@@ -25,6 +25,7 @@ class SmallButtonWidget extends StatelessWidget {
         child: RegularTextWidget(
           text: text,
           color: white,
+          textAlign: TextAlign.left,
         ),
       ),
     );

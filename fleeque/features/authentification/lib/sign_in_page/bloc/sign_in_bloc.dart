@@ -27,62 +27,110 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     required this.signOutUseCase,
     required this.signInUseCase,
     required this.signInWithGoogleUsecase,
-  }) : super(SignInInitial()) {
-    on<Init>((event, emit) async {
-      emit(Loading());
-      try {
-        final isSignIn = await isSignInUseCase.call();
-        if (isSignIn) {
-          final uid = await getCurrentUidUseCase.call();
-          emit(Authenticated(uid: uid));
-        } else {
-          emit(Unauthenticated());
+  }) : super(
+          SignInInitial(),
+        ) {
+    on<Init>(
+      (event, emit) async {
+        emit(
+          Loading(),
+        );
+        try {
+          final isSignIn = await isSignInUseCase.call();
+          if (isSignIn) {
+            final uid = await getCurrentUidUseCase.call();
+            emit(
+              Authenticated(uid: uid),
+            );
+          } else {
+            emit(
+              Unauthenticated(),
+            );
+          }
+        } on SocketException catch (_) {
+          emit(
+            Unauthenticated(),
+          );
         }
-      } on SocketException catch (_) {
-        emit(Unauthenticated());
-      }
-    });
-    on<LoggedIn>((event, emit) async {
-      emit(Loading());
-      try {
-        final uid = await getCurrentUidUseCase.call();
-        emit(Authenticated(uid: uid));
-      } on SocketException catch (_) {
-        emit(Unauthenticated());
-      }
-    });
-    on<LoggedOut>((event, emit) async {
-      emit(Loading());
-      try {
-        await signOutUseCase.call();
-        emit(Unauthenticated());
-      } on SocketException catch (_) {
-        emit(Unauthenticated());
-      }
-    });
-    on<SubmitSignIn>((event, emit) async {
-      emit(Loading());
-      try {
-        await signInUseCase.call(event.user);
-        emit(Success());
-      } on SocketException catch (_) {
-        emit(Error(message: _.message));
-      } catch (_) {
-        errorAuthentificationUsecase.call(_);
-        emit(Error(message: _));
-      }
-    });
-    on<SubmitGoogleSignIn>((event, emit) async {
-      emit(Loading());
-      try {
-        await signInWithGoogleUsecase.call();
-        emit(Success());
-      } on SocketException catch (_) {
-        emit(Error(message: _.message));
-      } catch (_) {
-        errorAuthentificationUsecase.call(_);
-        emit(Error(message: _));
-      }
-    });
+      },
+    );
+    on<LoggedIn>(
+      (event, emit) async {
+        emit(
+          Loading(),
+        );
+        try {
+          final uid = await getCurrentUidUseCase.call();
+          emit(
+            Authenticated(uid: uid),
+          );
+        } on SocketException catch (_) {
+          emit(
+            Unauthenticated(),
+          );
+        }
+      },
+    );
+    on<LoggedOut>(
+      (event, emit) async {
+        emit(
+          Loading(),
+        );
+        try {
+          await signOutUseCase.call();
+          emit(
+            Unauthenticated(),
+          );
+        } on SocketException catch (_) {
+          emit(
+            Unauthenticated(),
+          );
+        }
+      },
+    );
+    on<SubmitSignIn>(
+      (event, emit) async {
+        emit(
+          Loading(),
+        );
+        try {
+          await signInUseCase.call(event.user);
+          emit(
+            Success(),
+          );
+        } on SocketException catch (_) {
+          emit(
+            Error(message: _.message),
+          );
+        } catch (_) {
+          errorAuthentificationUsecase.call(_);
+          emit(
+            Error(message: _),
+          );
+        }
+      },
+    );
+    on<SubmitGoogleSignIn>(
+      (event, emit) async {
+        emit(
+          Loading(),
+        );
+        try {
+          await signInWithGoogleUsecase.call();
+          emit(
+            Success(),
+          );
+        } on SocketException catch (_) {
+          emit(
+            Error(message: _.message),
+          );
+        } catch (_) {
+          errorAuthentificationUsecase.call(_);
+          emit(
+            Error(message: _),
+          );
+        }
+      },
+    );
   }
 }

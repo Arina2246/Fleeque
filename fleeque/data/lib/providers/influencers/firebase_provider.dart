@@ -12,18 +12,20 @@ class FirebaseProvider {
   Future<List<InfluencerEntity>> getInfluencersCollection() async {
     final influencersCollectionRef = firestore.collection("influencers");
     List<InfluencerEntity> influencers =
-        await influencersCollectionRef.get().then<dynamic>((snapshot) async {
-      List<InfluencerEntity> influencerDataList = [];
-      for (var el in snapshot.docs) {
-        var influencerData = InfluencerModel.fromSnapshot(el);
-        var imgBig = await getDownloadURL(influencerData.imgBig);
-        var imgSmall = await getDownloadURL(influencerData.imgSmall);
-        var updatedInfluencerData =
-            InfluencerModel.updateImg(influencerData, imgBig, imgSmall);
-        influencerDataList.add(updatedInfluencerData);
-      }
-      return influencerDataList;
-    });
+        await influencersCollectionRef.get().then<dynamic>(
+      (snapshot) async {
+        List<InfluencerEntity> influencerDataList = [];
+        for (var el in snapshot.docs) {
+          var influencerData = InfluencerModel.fromSnapshot(el);
+          var imgBig = await getDownloadURL(influencerData.imgBig);
+          var imgSmall = await getDownloadURL(influencerData.imgSmall);
+          var updatedInfluencerData =
+              InfluencerModel.updateImg(influencerData, imgBig, imgSmall);
+          influencerDataList.add(updatedInfluencerData);
+        }
+        return influencerDataList;
+      },
+    );
     return influencers;
   }
 

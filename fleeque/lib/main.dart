@@ -8,7 +8,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await di.init();
-  runApp(const MyApp());
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
       // initialRoute: welcomeRoute,
-      initialRoute: homeRoute,
+      initialRoute: influencersRoute,
       onGenerateRoute: generateRoute,
     );
   }
@@ -29,5 +31,4 @@ class MyApp extends StatelessWidget {
 
 
 //сделать переключение с логина на home page
-// сделать страницу инфлюенсеров
 

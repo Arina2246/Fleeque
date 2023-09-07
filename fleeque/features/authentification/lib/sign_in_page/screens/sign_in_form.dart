@@ -26,7 +26,9 @@ class _SignInForm extends State<SignInForm> {
 
   @override
   void initState() {
-    BlocProvider.of<SignInBloc>(context).add(Init());
+    BlocProvider.of<SignInBloc>(context).add(
+      Init(),
+    );
     super.initState();
   }
 
@@ -52,7 +54,9 @@ class _SignInForm extends State<SignInForm> {
   }
 
   void submitSignInGoogle() {
-    BlocProvider.of<SignInBloc>(context).add(SubmitGoogleSignIn());
+    BlocProvider.of<SignInBloc>(context).add(
+      SubmitGoogleSignIn(),
+    );
   }
 
   void logOut() {
@@ -98,10 +102,11 @@ class _SignInForm extends State<SignInForm> {
           children: [
             const Spacer(),
             const Expanded(
-                flex: 6,
-                child: IntroTextWidget(
-                  text: 'Login with your credentials',
-                )),
+              flex: 6,
+              child: IntroTextWidget(
+                text: 'Login with your credentials',
+              ),
+            ),
             const Spacer(),
             const LoadingWidget(),
             Expanded(
@@ -122,12 +127,13 @@ class _SignInForm extends State<SignInForm> {
             ),
             const ErrorSignInWidget(),
             ChangePageWidget(
-                questionText: 'Don’t have an account ?',
-                buttonText: 'Sign Up!',
-                callback: () => Navigator.pushNamed(
-                      context,
-                      signUpRoute,
-                    )),
+              questionText: 'Don’t have an account ?',
+              buttonText: 'Sign Up!',
+              callback: () => Navigator.pushNamed(
+                context,
+                signUpRoute,
+              ),
+            ),
             const ForgotPasswordWidget(),
             const Spacer(),
             const Spacer(),
@@ -135,7 +141,10 @@ class _SignInForm extends State<SignInForm> {
               callback: () => submitSignInGoogle(),
             ),
             const Spacer(),
-            SubmitButtonWidget(text: 'LOGIN', callback: () => submitSignIn()),
+            SubmitButtonWidget(
+              text: 'LOGIN',
+              callback: () => submitSignIn(),
+            ),
             const Spacer(),
           ],
         ),
