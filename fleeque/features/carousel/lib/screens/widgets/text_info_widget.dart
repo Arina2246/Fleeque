@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:core_ui/core_ui.dart';
 
 class TextInfoWidget extends StatelessWidget {
@@ -13,22 +12,19 @@ class TextInfoWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Row(
+        const Row(
           children: [
-            const Spacer(),
+            Spacer(),
             Expanded(
               flex: 8,
-              child: Text(
-                'Create the perfect shoutout to your friends from their favorite influencers',
+              child: ExtraBoldTextWidget(
+                text:
+                    'Create the perfect shoutout to your friends from their favorite influencers',
+                color: black,
                 textAlign: TextAlign.center,
-                style: GoogleFonts.montserrat(
-                  color: black,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w800,
-                ),
               ),
             ),
-            const Spacer(),
+            Spacer(),
           ],
         ),
         Row(
@@ -36,14 +32,10 @@ class TextInfoWidget extends StatelessWidget {
             const Spacer(),
             Expanded(
               flex: 6,
-              child: Text(
-                carouselText,
+              child: BoldTextWidget(
+                text: carouselText,
+                color: black,
                 textAlign: TextAlign.center,
-                style: GoogleFonts.roboto(
-                  color: black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
               ),
             ),
             const Spacer(),

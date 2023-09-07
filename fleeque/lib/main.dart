@@ -28,7 +28,6 @@ class MyApp extends StatelessWidget {
 }
 
 
-
-//сделать about страницу
+//сделать переключение с логина на home page
 // сделать страницу инфлюенсеров
 

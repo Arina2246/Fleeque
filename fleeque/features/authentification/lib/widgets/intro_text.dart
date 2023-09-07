@@ -1,6 +1,5 @@
-import 'package:core_ui/colors/app_colors.dart';
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class IntroTextWidget extends StatelessWidget {
   final String text;
@@ -13,14 +12,10 @@ class IntroTextWidget extends StatelessWidget {
         const Spacer(),
         Expanded(
           flex: 3,
-          child: Text(
-            text,
+          child: ExtraBoldTextWidget(
+            text: text,
+            color: black,
             textAlign: TextAlign.center,
-            style: GoogleFonts.montserrat(
-              color: black,
-              fontSize: 24,
-              fontWeight: FontWeight.w800,
-            ),
           ),
         ),
         const Spacer(),

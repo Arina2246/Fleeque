@@ -3,6 +3,7 @@ import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:authentification/sign_in_page/screens/sign_in_screen.dart';
 import 'package:authentification/sign_up_page/screens/sign_up_screen.dart';
+import 'package:about/screens/about_screen.dart';
 import 'package:home/screens/home_screen.dart';
 import 'package:welcome/welcome.dart';
 import 'package:carousel/carousel.dart';
@@ -38,6 +39,16 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         settings: settings,
         builder: (_) => const HomeScreen(),
+      );
+    // case homeRoute:
+    //   return MaterialPageRoute(
+    //     settings: settings,
+    //     builder: (_) => const HomeScreen(),
+    //   );
+    case aboutRoute:
+      return MaterialPageRoute(
+        settings: settings,
+        builder: (_) => const AboutScreen(),
       );
     default:
       return MaterialPageRoute(

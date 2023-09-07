@@ -2,8 +2,6 @@ import 'package:core_ui/core_ui.dart';
 import 'package:domain/entities/influencers/influencers_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:home/screens/widgets/bold_text.dart';
-import 'package:home/screens/widgets/regular_text.dart';
 
 class InfluencerListCardWidget extends StatelessWidget {
   final InfluencerEntity influencerData;
@@ -36,6 +34,8 @@ class InfluencerListCardWidget extends StatelessWidget {
                 children: [
                   BoldTextWidget(
                     text: influencerData.name,
+                    color: black,
+                    textAlign: TextAlign.left,
                   ),
                 ],
               ),

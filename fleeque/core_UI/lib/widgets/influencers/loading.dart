@@ -1,8 +1,8 @@
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 
-class LoadingHomeWidget extends StatelessWidget {
-  const LoadingHomeWidget({
+class LoadingInfluencersWidget extends StatelessWidget {
+  const LoadingInfluencersWidget({
     Key? key,
   }) : super(key: key);
 

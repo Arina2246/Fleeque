@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:core_ui/core_ui.dart';
-import 'package:home/screens/widgets/regular_text.dart';
 
-class PopularButtonWidget extends StatelessWidget {
-  const PopularButtonWidget({Key? key}) : super(key: key);
+class SmallButtonWidget extends StatelessWidget {
+  final String text;
+
+  const SmallButtonWidget({Key? key, required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 102,
+      width: 110,
       height: 36,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -21,8 +22,8 @@ class PopularButtonWidget extends StatelessWidget {
           elevation: 0,
         ),
         onPressed: () {},
-        child: const RegularTextWidget(
-          text: 'popular',
+        child: RegularTextWidget(
+          text: text,
           color: white,
         ),
       ),

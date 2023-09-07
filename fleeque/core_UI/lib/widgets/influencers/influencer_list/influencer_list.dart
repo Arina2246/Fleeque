@@ -1,6 +1,6 @@
+import 'package:core_ui/widgets/influencers/influencer_list/influencer_list_card.dart';
 import 'package:domain/entities/influencers/influencers_entities.dart';
 import 'package:flutter/material.dart';
-import 'package:home/screens/widgets/influencer_list/influenser_list_card.dart';
 
 class InfluencerListWidget extends StatelessWidget {
   final List<InfluencerEntity> influencersCollection;

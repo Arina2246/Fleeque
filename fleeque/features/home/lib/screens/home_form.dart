@@ -1,17 +1,15 @@
 import 'package:core/core.dart';
+import 'package:core_ui/widgets/influencers/influencer_list/influencer_list.dart';
 import 'package:domain/entities/influencers/influencers_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:app_bar/app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home/bloc/home_bloc.dart';
-import 'package:home/screens/widgets/bold_text.dart';
 import 'package:home/screens/widgets/carousel_slider/carousel_slider.dart';
-import 'package:home/screens/widgets/error.dart';
-import 'package:home/screens/widgets/influencer_list/influencer_list.dart';
-import 'package:home/screens/widgets/loading.dart';
-import 'package:home/screens/widgets/popular_button.dart';
 import 'package:nav_bar/screens/nav_bar.dart';
+import 'package:core_ui/widgets/influencers/error.dart';
+import 'package:core_ui/widgets/influencers/loading.dart';
 
 class HomeForm extends StatefulWidget {
   const HomeForm({super.key});
@@ -39,16 +37,16 @@ class _HomeForm extends State<HomeForm> {
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
           if (state is Loading) {
-            return const LoadingHomeWidget();
+            return const LoadingInfluencersWidget();
           }
           if (state is Error) {
-            return const ErrorHomeWidget();
+            return const ErrorInfluencersWidget();
           }
 
           if (state is Success) {
             return _body(influencersCollection: state.influencersCollection);
           }
-          return const LoadingHomeWidget();
+          return const LoadingInfluencersWidget();
         },
       ),
       bottomNavigationBar: const NavBarWidget(),
@@ -65,8 +63,14 @@ class _HomeForm extends State<HomeForm> {
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                PopularButtonWidget(),
-                BoldTextWidget(text: 'Swipe to explore Influencers'),
+                SmallButtonWidget(
+                  text: 'POPULAR',
+                ),
+                BoldTextWidget(
+                  textAlign: TextAlign.left,
+                  text: 'Swipe to explore Influencers',
+                  color: black,
+                ),
               ],
             ),
           ),

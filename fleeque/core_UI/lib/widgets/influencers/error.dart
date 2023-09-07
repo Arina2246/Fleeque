@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ErrorHomeWidget extends StatelessWidget {
-  const ErrorHomeWidget({
+class ErrorInfluencersWidget extends StatelessWidget {
+  const ErrorInfluencersWidget({
     Key? key,
   }) : super(key: key);
 

@@ -1,7 +1,5 @@
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:home/screens/widgets/regular_text.dart';
 
 class CardTextWidget extends StatelessWidget {
   final String name;
@@ -27,14 +25,10 @@ class CardTextWidget extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Column(
         children: [
-          Text(
-            name,
-            style: GoogleFonts.montserrat(
-              letterSpacing: 0,
-              color: white,
-              fontSize: 24,
-              fontWeight: FontWeight.w800,
-            ),
+          ExtraBoldTextWidget(
+            textAlign: TextAlign.left,
+            text: name,
+            color: white,
           ),
           const Spacer(),
           RegularTextWidget(
