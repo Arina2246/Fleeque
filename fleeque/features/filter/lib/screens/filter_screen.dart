@@ -4,6 +4,7 @@ import 'package:app_bar/app_bar.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:filter/screens/widgets/input.dart';
 import 'package:filter/screens/widgets/price_dropdown.dart';
+import 'package:filter/screens/widgets/search_input.dart';
 import 'package:filter/screens/widgets/time_dropdown.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +21,7 @@ class _FilterScreen extends State<FilterScreen> {
   String timeSorting = 'Select';
   final TextEditingController _popularityController = TextEditingController();
   final TextEditingController _countryController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   updatePriceSorting(String? newValue) {
     setState(() {
@@ -44,7 +46,11 @@ class _FilterScreen extends State<FilterScreen> {
   }
 
   sendFilterData() {
-    widget.controller.add({'time': timeSorting, 'price': priceSorting});
+    widget.controller.add({
+      'time': timeSorting,
+      'price': priceSorting,
+      'search': _searchController.text
+    });
     Navigator.pop(context);
   }
 
@@ -118,13 +124,8 @@ class _FilterScreen extends State<FilterScreen> {
                 color: white,
                 textAlign: TextAlign.justify),
             const Spacer(),
-            ElevatedButtonWidget(
-              width: double.maxFinite.toInt(),
-              borderColor: white,
-              backgroundColor: black,
-              textColor: white,
-              text: 'SEARCH...',
-              onPressed: () {},
+            SearchInputWidget(
+              controller: _searchController,
             ),
             const Spacer(),
             ElevatedButtonWidget(

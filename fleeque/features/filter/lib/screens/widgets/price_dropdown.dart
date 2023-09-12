@@ -4,10 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:core/core.dart';
 
 class PriceDropdownWidget extends StatelessWidget {
-  Function(String?) callback;
-  String value;
+  final Function(String?) callback;
+  final String value;
 
-  PriceDropdownWidget({Key? key, required this.callback, required this.value})
+  const PriceDropdownWidget(
+      {Key? key, required this.callback, required this.value})
       : super(key: key);
 
   @override

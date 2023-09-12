@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TimeDropdownWidget extends StatelessWidget {
-  Function(String?) callback;
-  String value;
+  final Function(String?) callback;
+  final String value;
 
-  TimeDropdownWidget({Key? key, required this.callback, required this.value})
+  const TimeDropdownWidget(
+      {Key? key, required this.callback, required this.value})
       : super(key: key);
 
   @override

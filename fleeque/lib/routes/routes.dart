@@ -1,7 +1,6 @@
 import 'package:authentification/forgot_password_page/screens/forgot_password_screen.dart';
 import 'package:contact/screens/contact_screen.dart';
 import 'package:core/core.dart';
-import 'package:filter/screens/filter_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:authentification/sign_in_page/screens/sign_in_screen.dart';
 import 'package:authentification/sign_up_page/screens/sign_up_screen.dart';

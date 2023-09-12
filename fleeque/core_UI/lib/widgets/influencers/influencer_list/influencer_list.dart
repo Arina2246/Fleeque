@@ -1,3 +1,4 @@
+import 'package:core_ui/core_ui.dart';
 import 'package:core_ui/widgets/influencers/influencer_list/influencer_list_card.dart';
 import 'package:domain/entities/influencers/influencers_entities.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,20 @@ class InfluencerListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (influencersCollection.isEmpty) {
+      return const Column(
+        children: [
+          RegularTextWidget(
+            text: 'No Influencers',
+            color: black,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: 250,
+          )
+        ],
+      );
+    }
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.85,
       child: ListView.builder(

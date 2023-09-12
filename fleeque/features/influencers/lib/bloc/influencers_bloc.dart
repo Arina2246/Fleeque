@@ -53,6 +53,7 @@ class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
   }
 
   Future<void> filterData(Emitter emit, Map<String, dynamic> filters) async {
+    print(filters);
     var collectionCopy = [...collection];
     if (filters['time'] == timeNewest) {
       collectionCopy.sort(
@@ -64,6 +65,15 @@ class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
       collectionCopy.sort((a, b) => a.basicPrice.compareTo(b.basicPrice));
     } else if (filters['price'] == priceHighToLow) {
       collectionCopy.sort((b, a) => a.basicPrice.compareTo(b.basicPrice));
+    }
+    if (filters['search'] != '') {
+      collectionCopy = collectionCopy
+          .where(
+            (el) => el.name.toLowerCase().contains(
+                  filters['search'].toLowerCase(),
+                ),
+          )
+          .toList();
     }
     emit(
       InfluencersState(
