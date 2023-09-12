@@ -11,10 +11,10 @@ class SucessForgotPasswordWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
       buildWhen: (context, state) {
-        return state is Success;
+        return state.success;
       },
       builder: (context, state) {
-        if (state is Success) {
+        if (state.success) {
           return const Text('Mail send to your Email');
         } else {
           return const Text('');

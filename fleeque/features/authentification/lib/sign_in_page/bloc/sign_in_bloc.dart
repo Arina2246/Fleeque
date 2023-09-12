@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:domain/entities/authentification/authentification_entities.dart';
 import 'package:domain/usecases/authentification/error_usecase.dart';
@@ -28,109 +26,157 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     required this.signInUseCase,
     required this.signInWithGoogleUsecase,
   }) : super(
-          SignInInitial(),
+          const SignInState(
+              uid: '',
+              isAuthenticated: false,
+              isLoading: true,
+              isError: false,
+              errorMessage: ''),
         ) {
     on<Init>(
       (event, emit) async {
-        emit(
-          Loading(),
-        );
-        try {
-          final isSignIn = await isSignInUseCase.call();
-          if (isSignIn) {
-            final uid = await getCurrentUidUseCase.call();
-            emit(
-              Authenticated(uid: uid),
-            );
-          } else {
-            emit(
-              Unauthenticated(),
-            );
-          }
-        } on SocketException catch (_) {
-          emit(
-            Unauthenticated(),
-          );
-        }
-      },
-    );
-    on<LoggedIn>(
-      (event, emit) async {
-        emit(
-          Loading(),
-        );
-        try {
-          final uid = await getCurrentUidUseCase.call();
-          emit(
-            Authenticated(uid: uid),
-          );
-        } on SocketException catch (_) {
-          emit(
-            Unauthenticated(),
-          );
-        }
+        await init(emit);
       },
     );
     on<LoggedOut>(
       (event, emit) async {
-        emit(
-          Loading(),
-        );
-        try {
-          await signOutUseCase.call();
-          emit(
-            Unauthenticated(),
-          );
-        } on SocketException catch (_) {
-          emit(
-            Unauthenticated(),
-          );
-        }
+        await loggedOut(emit);
       },
     );
     on<SubmitSignIn>(
       (event, emit) async {
-        emit(
-          Loading(),
-        );
-        try {
-          await signInUseCase.call(event.user);
-          emit(
-            Success(),
-          );
-        } on SocketException catch (_) {
-          emit(
-            Error(message: _.message),
-          );
-        } catch (_) {
-          errorAuthentificationUsecase.call(_);
-          emit(
-            Error(message: _),
-          );
-        }
+        await submitSignIn(emit: emit, user: event.user);
       },
     );
     on<SubmitGoogleSignIn>(
       (event, emit) async {
-        emit(
-          Loading(),
-        );
-        try {
-          await signInWithGoogleUsecase.call();
-          emit(
-            Success(),
-          );
-        } on SocketException catch (_) {
-          emit(
-            Error(message: _.message),
-          );
-        } catch (_) {
-          errorAuthentificationUsecase.call(_);
-          emit(
-            Error(message: _),
-          );
-        }
+        await signInWithGoogle(emit);
       },
     );
+  }
+
+  Future<void> init(Emitter emit) async {
+    try {
+      var isSignIn = await isSignInUseCase.call();
+      emit(
+        const SignInState(
+            uid: '',
+            isAuthenticated: false,
+            isError: false,
+            isLoading: false,
+            errorMessage: ''),
+      );
+      if (isSignIn) {
+        final uid = await getCurrentUidUseCase.call();
+        emit(
+          SignInState(
+              uid: uid,
+              isAuthenticated: true,
+              isError: false,
+              isLoading: false,
+              errorMessage: ''),
+        );
+      } else {
+        emit(
+          const SignInState(
+              uid: '',
+              isAuthenticated: false,
+              isError: false,
+              isLoading: false,
+              errorMessage: ''),
+        );
+      }
+    } catch (_) {
+      emit(
+        const SignInState(
+            uid: '',
+            isAuthenticated: false,
+            isError: false,
+            isLoading: false,
+            errorMessage: ''),
+      );
+    }
+  }
+
+  Future<void> loggedOut(Emitter emit) async {
+    try {
+      await signOutUseCase.call();
+      emit(
+        const SignInState(
+            uid: '',
+            isAuthenticated: false,
+            isError: false,
+            isLoading: false,
+            errorMessage: ''),
+      );
+    } catch (_) {
+      emit(
+        const SignInState(
+            uid: '',
+            isAuthenticated: false,
+            isError: false,
+            isLoading: false,
+            errorMessage: ''),
+      );
+    }
+  }
+
+  Future<void> submitSignIn(
+      {required Emitter emit, required UserEntity user}) async {
+    emit(
+      const SignInState(
+          uid: '',
+          isAuthenticated: false,
+          isError: false,
+          isLoading: true,
+          errorMessage: ''),
+    );
+    try {
+      await signInUseCase.call(user);
+      final uid = await getCurrentUidUseCase.call();
+      emit(
+        SignInState(
+            uid: uid,
+            isAuthenticated: true,
+            isError: false,
+            isLoading: false,
+            errorMessage: ''),
+      );
+    } catch (_) {
+      final errorMessage = errorAuthentificationUsecase.call(_);
+      emit(
+        SignInState(
+            uid: '',
+            isAuthenticated: false,
+            isError: true,
+            isLoading: false,
+            errorMessage: errorMessage),
+      );
+    }
+  }
+
+  Future<void> signInWithGoogle(Emitter emit) async {
+    try {
+      await signInWithGoogleUsecase.call();
+      final uid = await getCurrentUidUseCase.call();
+      emit(
+        SignInState(
+            uid: uid,
+            isAuthenticated: true,
+            isError: false,
+            isLoading: false,
+            errorMessage: ''),
+      );
+    } catch (_) {
+      final errorMessage = errorAuthentificationUsecase.call(_);
+      emit(
+        SignInState(
+            uid: '',
+            isAuthenticated: false,
+            isError: true,
+            isLoading: false,
+            errorMessage: errorMessage),
+      );
+    }
   }
 }

@@ -16,7 +16,7 @@ class InfluencersScreen extends StatelessWidget {
         getDownloadUrlUsecase: di.sl<GetDownloadUrlUsecase>(),
         getInfluencersCollectionUsecase:
             di.sl<GetInfluencersCollectionUsecase>(),
-      ),
+      )..add(Init()),
       child: const InfluencersForm(),
     );
   }

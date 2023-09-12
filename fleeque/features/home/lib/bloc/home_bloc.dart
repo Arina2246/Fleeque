@@ -15,25 +15,34 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     required this.getDownloadUrlUsecase,
     required this.getInfluencersCollectionUsecase,
   }) : super(
-          HomeInitial(),
+          const HomeState(
+              influencersCollection: [], isLoading: true, isError: false),
         ) {
     on<Init>(
       (event, emit) async {
-        emit(
-          Loading(),
-        );
-        try {
-          final influencersCollection =
-              await getInfluencersCollectionUsecase.call();
-          emit(
-            Success(influencersCollection: influencersCollection),
-          );
-        } catch (e) {
-          emit(
-            Error(),
-          );
-        }
+        await init(emit);
       },
     );
+  }
+
+  Future<void> init(Emitter emit) async {
+    try {
+      var influencersCollection = await getInfluencersCollectionUsecase.call();
+      emit(
+        HomeState(
+          influencersCollection: influencersCollection,
+          isLoading: false,
+          isError: false,
+        ),
+      );
+    } catch (e) {
+      emit(
+        const HomeState(
+          influencersCollection: [],
+          isLoading: false,
+          isError: true,
+        ),
+      );
+    }
   }
 }

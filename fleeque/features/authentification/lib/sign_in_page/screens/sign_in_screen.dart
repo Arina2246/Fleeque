@@ -24,7 +24,7 @@ class SignInScreen extends StatelessWidget {
         signOutUseCase: di.sl<SignOutUseCase>(),
         signInUseCase: di.sl<SignInUseCase>(),
         signInWithGoogleUsecase: di.sl<SignInWithGoogleUsecase>(),
-      ),
+      )..add(Init()),
       child: const SignInForm(),
     );
   }

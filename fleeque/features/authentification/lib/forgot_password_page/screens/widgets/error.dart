@@ -16,10 +16,10 @@ class ErrorForgotPasswordWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
       builder: (context, state) {
-        if (state is Error) {
+        if (state.isError) {
           return Text(
             _cleanErrorMessage(
-              state.message.toString(),
+              state.errorMessage.toString(),
             ),
           );
         } else {

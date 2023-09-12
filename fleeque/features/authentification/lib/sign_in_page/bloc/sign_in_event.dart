@@ -1,10 +1,7 @@
 part of 'sign_in_bloc.dart';
 
-sealed class SignInEvent extends Equatable {
+sealed class SignInEvent {
   const SignInEvent();
-
-  @override
-  List<Object> get props => [];
 }
 
 class Init extends SignInEvent {}

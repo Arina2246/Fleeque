@@ -16,10 +16,10 @@ class ErrorSignInWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SignInBloc, SignInState>(
       builder: (context, state) {
-        if (state is Error) {
+        if (state.isError) {
           return Text(
             _cleanErrorMessage(
-              state.message.toString(),
+              state.errorMessage,
             ),
           );
         } else {

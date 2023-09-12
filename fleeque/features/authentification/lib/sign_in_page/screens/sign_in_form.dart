@@ -24,14 +24,6 @@ class _SignInForm extends State<SignInForm> {
   final TextEditingController _passwordController = TextEditingController();
 
   @override
-  void initState() {
-    BlocProvider.of<SignInBloc>(context).add(
-      Init(),
-    );
-    super.initState();
-  }
-
-  @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
@@ -67,89 +59,70 @@ class _SignInForm extends State<SignInForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<SignInBloc, SignInState>(
-        builder: (context, state) {
-          if (state is Authenticated) {
-            Future.microtask(
-              () => Navigator.pushNamed(context, homeRoute),
-            );
-            // return HomeScreen(
-            //   callback: () => logOut(),
-            //   uid: state.uid,
-            // );
+      body: BlocConsumer<SignInBloc, SignInState>(
+        listener: (context, state) {
+          if (state.isAuthenticated) {
+            Navigator.pushNamed(context, homeRoute);
           }
-          if (state is Unauthenticated) {
-            return _body();
-          }
-
-          if (state is Success) {
-            BlocProvider.of<SignInBloc>(context).add(
-              LoggedIn(),
-            );
-          }
-          return _body();
         },
-      ),
-    );
-  }
-
-  Widget _body() {
-    return Scaffold(
-      body: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Spacer(),
-            const Expanded(
-              flex: 6,
-              child: IntroTextWidget(
-                text: 'Login with your credentials',
-              ),
+        builder: (context, state) {
+          return SizedBox(
+            height: double.infinity,
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Spacer(),
+                const Expanded(
+                  flex: 6,
+                  child: IntroTextWidget(
+                    text: 'Login with your credentials',
+                  ),
+                ),
+                const Spacer(),
+                const LoadingWidget(),
+                Expanded(
+                  flex: 1,
+                  child: TextInputWidget(
+                    obscureText: false,
+                    labelText: 'EMAIL',
+                    controller: _emailController,
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: TextInputWidget(
+                    obscureText: true,
+                    labelText: 'PASSWORD',
+                    controller: _passwordController,
+                  ),
+                ),
+                const ErrorSignInWidget(),
+                ChangePageWidget(
+                  questionText: 'Don’t have an account ?',
+                  buttonText: 'Sign Up!',
+                  callback: () => Navigator.pushNamed(
+                    context,
+                    signUpRoute,
+                  ),
+                ),
+                const ForgotPasswordWidget(),
+                const Spacer(),
+                const Spacer(),
+                GoogleSignInButtonWidget(
+                  callback: () => submitSignInGoogle(),
+                ),
+                const Spacer(),
+                SubmitButtonWidget(
+                  text: 'LOGIN',
+                  callback: () => submitSignIn(),
+                ),
+                const Spacer(),
+              ],
             ),
-            const Spacer(),
-            const LoadingWidget(),
-            Expanded(
-              flex: 1,
-              child: TextInputWidget(
-                obscureText: false,
-                labelText: 'EMAIL',
-                controller: _emailController,
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: TextInputWidget(
-                obscureText: true,
-                labelText: 'PASSWORD',
-                controller: _passwordController,
-              ),
-            ),
-            const ErrorSignInWidget(),
-            ChangePageWidget(
-              questionText: 'Don’t have an account ?',
-              buttonText: 'Sign Up!',
-              callback: () => Navigator.pushNamed(
-                context,
-                signUpRoute,
-              ),
-            ),
-            const ForgotPasswordWidget(),
-            const Spacer(),
-            const Spacer(),
-            GoogleSignInButtonWidget(
-              callback: () => submitSignInGoogle(),
-            ),
-            const Spacer(),
-            SubmitButtonWidget(
-              text: 'LOGIN',
-              callback: () => submitSignIn(),
-            ),
-            const Spacer(),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

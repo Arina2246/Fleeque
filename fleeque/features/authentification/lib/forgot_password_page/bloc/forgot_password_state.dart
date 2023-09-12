@@ -1,19 +1,17 @@
 part of 'forgot_password_bloc.dart';
 
-sealed class ForgotPasswordState extends Equatable {
-  const ForgotPasswordState();
+class ForgotPasswordState extends Equatable {
+  final bool isLoading;
+  final bool isError;
+  final String errorMessage;
+  final bool success;
+  const ForgotPasswordState({
+    required this.isLoading,
+    required this.isError,
+    required this.errorMessage,
+    required this.success,
+  });
 
   @override
-  List<Object> get props => [];
-}
-
-final class ForgotPasswordInitial extends ForgotPasswordState {}
-
-final class Loading extends ForgotPasswordState {}
-
-final class Success extends ForgotPasswordState {}
-
-final class Error extends ForgotPasswordState {
-  final Object message;
-  const Error({required this.message});
+  List<Object> get props => [isLoading, isError, errorMessage];
 }

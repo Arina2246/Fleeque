@@ -1,3 +1,4 @@
+import 'package:app_bar/screens/widgets/back_button.dart';
 import 'package:app_bar/screens/widgets/discount_icon.dart';
 import 'package:app_bar/screens/widgets/info_icon.dart';
 import 'package:app_bar/screens/widgets/logo.dart';
@@ -9,12 +10,18 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final bool isOnline;
   final bool isDiscontShown;
   final bool isWalletShown;
+  final bool isUserShown;
+  final bool isLogoShown;
+  final bool isInfoShown;
   final Color backgroundColor;
   const AppBarWidget(
       {Key? key,
       required this.isOnline,
       required this.isDiscontShown,
       required this.isWalletShown,
+      required this.isUserShown,
+      required this.isLogoShown,
+      required this.isInfoShown,
       required this.backgroundColor})
       : super(key: key);
 
@@ -30,21 +37,27 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
           Expanded(
             child: Row(
               children: [
-                UserIconWidget(isOnline: isOnline),
-                const Spacer(),
-                if (isDiscontShown) const DiscountIconWidget()
+                if (isUserShown) ...[
+                  const Spacer(),
+                  UserIconWidget(isOnline: isOnline),
+                  const Spacer(),
+                  if (isDiscontShown) const DiscountIconWidget(),
+                ] else ...[
+                  const BackButtonWidget(),
+                  const Spacer(),
+                ]
               ],
             ),
           ),
           const Spacer(),
-          const LogoWidget(),
+          if (isLogoShown) const LogoWidget(),
           const Spacer(),
           Expanded(
             child: Row(
               children: [
                 if (isWalletShown) const WalletIconWidget(),
                 const Spacer(),
-                const InfoIconWidget(),
+                if (isInfoShown) const InfoIconWidget(),
               ],
             ),
           ),

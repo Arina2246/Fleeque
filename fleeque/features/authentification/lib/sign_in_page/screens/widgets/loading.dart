@@ -12,7 +12,7 @@ class LoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SignInBloc, SignInState>(
       builder: (context, state) {
-        if (state is Loading) {
+        if (state.isLoading) {
           return const CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation<Color>(black),
           );

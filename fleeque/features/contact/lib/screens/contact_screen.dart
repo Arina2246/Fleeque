@@ -14,6 +14,9 @@ class ContactScreen extends StatelessWidget {
         isOnline: true,
         isDiscontShown: true,
         isWalletShown: true,
+        isUserShown: true,
+        isLogoShown: true,
+        isInfoShown: true,
       ),
       body: ListView(
         shrinkWrap: true,

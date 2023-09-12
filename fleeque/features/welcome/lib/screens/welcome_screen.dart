@@ -5,27 +5,21 @@ import 'package:flutter/material.dart';
 import 'package:welcome/screens/widgets/logo_widget.dart';
 import 'package:welcome/screens/widgets/reserved_rights_widget.dart';
 
-class WelcomeScreen extends StatefulWidget {
+class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
-
-  @override
-  State<WelcomeScreen> createState() => _WelcomeSplashPage();
-}
-
-class _WelcomeSplashPage extends State<WelcomeScreen> {
-  bool isOnline = false;
-  bool isDiscontShown = false;
-  bool isWalletShown = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBarWidget(
+      appBar: const AppBarWidget(
         backgroundColor: transparent,
-        isOnline: isOnline,
-        isDiscontShown: isDiscontShown,
-        isWalletShown: isWalletShown,
+        isOnline: false,
+        isDiscontShown: false,
+        isWalletShown: false,
+        isUserShown: true,
+        isLogoShown: true,
+        isInfoShown: true,
       ),
       body: Container(
         height: double.infinity,

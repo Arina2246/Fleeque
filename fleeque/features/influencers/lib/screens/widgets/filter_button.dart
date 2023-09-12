@@ -1,8 +1,13 @@
+import 'dart:async';
+
 import 'package:core_ui/core_ui.dart';
+import 'package:filter/screens/filter_screen.dart';
 import 'package:flutter/material.dart';
 
 class FilternButtonWidget extends StatelessWidget {
-  const FilternButtonWidget({Key? key}) : super(key: key);
+  final StreamController<Map<String, dynamic>> controller;
+  const FilternButtonWidget({Key? key, required this.controller})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +21,15 @@ class FilternButtonWidget extends StatelessWidget {
           shadowColor: transparent,
           elevation: 0,
         ),
-        onPressed: () => {},
+        onPressed: () => {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => FilterScreen(
+                      controller: controller,
+                    )),
+          ),
+        },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

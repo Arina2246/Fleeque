@@ -1,19 +1,14 @@
 part of 'influencers_bloc.dart';
 
-sealed class InfluencersState extends Equatable {
-  const InfluencersState();
+class InfluencersState extends Equatable {
+  final List<InfluencerEntity> influencersCollection;
+  final bool isLoading;
+  final bool isError;
+  const InfluencersState(
+      {required this.influencersCollection,
+      required this.isLoading,
+      required this.isError});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [influencersCollection, isLoading, isError];
 }
-
-final class InfluencersInitial extends InfluencersState {}
-
-final class Loading extends InfluencersState {}
-
-final class Success extends InfluencersState {
-  final List<InfluencerEntity> influencersCollection;
-  const Success({required this.influencersCollection});
-}
-
-final class Error extends InfluencersState {}

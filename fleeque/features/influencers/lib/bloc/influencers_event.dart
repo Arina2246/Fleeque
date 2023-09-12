@@ -1,10 +1,12 @@
 part of 'influencers_bloc.dart';
 
-sealed class InfluencersEvent extends Equatable {
-  const InfluencersEvent();
-
-  @override
-  List<Object> get props => [];
+sealed class InfluencersEvent {
+  InfluencersEvent();
 }
 
 class Init extends InfluencersEvent {}
+
+class Filter extends InfluencersEvent {
+  final Map<String, dynamic> filterData;
+  Filter(this.filterData);
+}

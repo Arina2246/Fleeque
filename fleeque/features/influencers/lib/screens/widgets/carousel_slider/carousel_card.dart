@@ -20,7 +20,7 @@ class CarouselCardWidget extends StatelessWidget {
               image: DecorationImage(
                 alignment: Alignment.topCenter,
                 image: NetworkImage(
-                  influencerData.imgBig,
+                  influencerData.img,
                 ),
                 fit: BoxFit.cover,
               ),

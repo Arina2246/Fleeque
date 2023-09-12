@@ -58,88 +58,69 @@ class _SignUpForm extends State<SignUpForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<SignUpBloc, SignUpState>(
-        builder: (context, state) {
-          if (state is Authenticated) {
-            Future.microtask(
-              () => Navigator.pushNamed(context, homeRoute),
-            );
-            // return HomeScreen(
-            //   callback: () => logOut(),
-            //   uid: state.uid,
-            // );
+      body: BlocConsumer<SignUpBloc, SignUpState>(
+        listener: (BuildContext context, SignUpState state) {
+          if (state.isAuthenticated) {
+            Navigator.pushNamed(context, homeRoute);
           }
-          if (state is Unauthenticated) {
-            return _body();
-          }
-
-          if (state is Success) {
-            BlocProvider.of<SignUpBloc>(context).add(
-              LoggedIn(),
-            );
-          }
-          return _body();
         },
-      ),
-    );
-  }
-
-  Widget _body() {
-    return Scaffold(
-      body: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Spacer(),
-            const Expanded(
-              flex: 6,
-              child: IntroTextWidget(
-                text: 'Register with your credentials',
-              ),
+        builder: (context, state) {
+          return SizedBox(
+            height: double.infinity,
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Spacer(),
+                const Expanded(
+                  flex: 6,
+                  child: IntroTextWidget(
+                    text: 'Register with your credentials',
+                  ),
+                ),
+                const LoadingWidget(),
+                const Spacer(),
+                Expanded(
+                  flex: 1,
+                  child: TextInputWidget(
+                    obscureText: false,
+                    labelText: 'EMAIL',
+                    controller: _emailController,
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: TextInputWidget(
+                    obscureText: true,
+                    labelText: 'PASSWORD',
+                    controller: _passwordController,
+                  ),
+                ),
+                const ErrorSignUpWidget(),
+                ChangePageWidget(
+                  questionText: 'Already have an account ?',
+                  buttonText: 'Sign In!',
+                  callback: () => Navigator.pushNamed(
+                    context,
+                    signInRoute,
+                  ),
+                ),
+                const Spacer(),
+                const Spacer(),
+                GoogleSignInButtonWidget(
+                  callback: () => submitSignUpGoogle(),
+                ),
+                const Spacer(),
+                SubmitButtonWidget(
+                  text: 'REGISTER',
+                  callback: () => submitSignUp(),
+                ),
+                const Spacer(),
+              ],
             ),
-            const LoadingWidget(),
-            const Spacer(),
-            Expanded(
-              flex: 1,
-              child: TextInputWidget(
-                obscureText: false,
-                labelText: 'EMAIL',
-                controller: _emailController,
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: TextInputWidget(
-                obscureText: true,
-                labelText: 'PASSWORD',
-                controller: _passwordController,
-              ),
-            ),
-            const ErrorSignUpWidget(),
-            ChangePageWidget(
-              questionText: 'Already have an account ?',
-              buttonText: 'Sign In!',
-              callback: () => Navigator.pushNamed(
-                context,
-                signInRoute,
-              ),
-            ),
-            const Spacer(),
-            const Spacer(),
-            GoogleSignInButtonWidget(
-              callback: () => submitSignUpGoogle(),
-            ),
-            const Spacer(),
-            SubmitButtonWidget(
-              text: 'REGISTER',
-              callback: () => submitSignUp(),
-            ),
-            const Spacer(),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

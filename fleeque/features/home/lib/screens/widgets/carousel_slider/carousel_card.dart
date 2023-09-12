@@ -13,11 +13,17 @@ class CarouselCardWidget extends StatelessWidget {
       children: <Widget>[
         Container(
           alignment: Alignment.center,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
-            child: Image.network(
-              influencerData.imgBig,
-              fit: BoxFit.cover,
+          child: Container(
+            width: 320,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              image: DecorationImage(
+                alignment: Alignment.topCenter,
+                image: NetworkImage(
+                  influencerData.img,
+                ),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),

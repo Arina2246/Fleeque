@@ -1,19 +1,14 @@
 part of 'home_bloc.dart';
 
-sealed class HomeState extends Equatable {
-  const HomeState();
+class HomeState extends Equatable {
+  final List<InfluencerEntity> influencersCollection;
+  final bool isLoading;
+  final bool isError;
+  const HomeState(
+      {required this.influencersCollection,
+      required this.isLoading,
+      required this.isError});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [influencersCollection, isLoading, isError];
 }
-
-final class HomeInitial extends HomeState {}
-
-final class Loading extends HomeState {}
-
-final class Success extends HomeState {
-  final List<InfluencerEntity> influencersCollection;
-  const Success({required this.influencersCollection});
-}
-
-final class Error extends HomeState {}
