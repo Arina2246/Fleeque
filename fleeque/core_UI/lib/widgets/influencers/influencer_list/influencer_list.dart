@@ -9,10 +9,6 @@ class InfluencerListWidget extends StatelessWidget {
       {Key? key, required this.influencersCollection, required this.itemsCount})
       : super(key: key);
 
-  _validateIndex(int index) {
-    return (index > influencersCollection.length - 1) ? index - 4 : index;
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -27,7 +23,7 @@ class InfluencerListWidget extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(top: 20),
             child: InfluencerListCardWidget(
-              influencerData: influencersCollection[_validateIndex(index)],
+              influencerData: influencersCollection[index],
             ),
           );
         },

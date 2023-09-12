@@ -17,10 +17,9 @@ class FirebaseProvider {
         List<InfluencerEntity> influencerDataList = [];
         for (var el in snapshot.docs) {
           var influencerData = InfluencerModel.fromSnapshot(el);
-          var imgBig = await getDownloadURL(influencerData.imgBig);
-          var imgSmall = await getDownloadURL(influencerData.imgSmall);
+          var img = await getDownloadURL(influencerData.img);
           var updatedInfluencerData =
-              InfluencerModel.updateImg(influencerData, imgBig, imgSmall);
+              InfluencerModel.updateImg(influencerData, img);
           influencerDataList.add(updatedInfluencerData);
         }
         return influencerDataList;

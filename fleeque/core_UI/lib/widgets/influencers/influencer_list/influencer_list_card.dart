@@ -19,10 +19,19 @@ class InfluencerListCardWidget extends StatelessWidget {
     return Row(
       children: [
         Container(
+          width: 75,
+          height: 75,
           alignment: Alignment.center,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
-            child: Image.network(influencerData.imgSmall),
+          child: AspectRatio(
+            aspectRatio: 1.07,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: Image.network(
+                alignment: FractionalOffset.topCenter,
+                influencerData.img,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
         ),
         const Spacer(),

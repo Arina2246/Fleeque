@@ -6,14 +6,16 @@ class InfluencerModel extends InfluencerEntity {
     required final String name,
     required final int posts,
     required final int followers,
-    required final String imgBig,
-    required final String imgSmall,
+    required final String img,
+    required final int basicPrice,
+    required final String time,
   }) : super(
           name: name,
           posts: posts,
           followers: followers,
-          imgBig: imgBig,
-          imgSmall: imgSmall,
+          img: img,
+          basicPrice: basicPrice,
+          time: time,
         );
 
   factory InfluencerModel.fromSnapshot(
@@ -22,19 +24,20 @@ class InfluencerModel extends InfluencerEntity {
       name: querySnapshot.get('name'),
       posts: querySnapshot.get('posts'),
       followers: querySnapshot.get('followers'),
-      imgBig: querySnapshot.get('imgBig'),
-      imgSmall: querySnapshot.get('imgSmall'),
+      img: querySnapshot.get('img'),
+      basicPrice: querySnapshot.get('basicPrice'),
+      time: querySnapshot.get('time'),
     );
   }
 
-  factory InfluencerModel.updateImg(
-      InfluencerModel model, String imgBig, String imgSmall) {
+  factory InfluencerModel.updateImg(InfluencerModel model, String img) {
     return InfluencerModel(
       name: model.name,
       posts: model.posts,
       followers: model.followers,
-      imgBig: imgBig,
-      imgSmall: imgSmall,
+      img: img,
+      basicPrice: model.basicPrice,
+      time: model.time,
     );
   }
 
@@ -43,8 +46,9 @@ class InfluencerModel extends InfluencerEntity {
       "name": name,
       "posts": posts,
       "followers": followers,
-      "imgBig": imgBig,
-      "imgSmall": imgSmall
+      "img": img,
+      "basicPrice": basicPrice,
+      "time": time,
     };
   }
 }
