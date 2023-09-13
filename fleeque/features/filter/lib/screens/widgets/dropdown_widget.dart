@@ -1,14 +1,17 @@
-import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TimeDropdownWidget extends StatelessWidget {
+class FilterDropdownWidget extends StatelessWidget {
   final Function(String?) callback;
   final String value;
+  final List<String> allValues;
 
-  const TimeDropdownWidget(
-      {Key? key, required this.callback, required this.value})
+  const FilterDropdownWidget(
+      {Key? key,
+      required this.callback,
+      required this.value,
+      required this.allValues})
       : super(key: key);
 
   @override
@@ -28,7 +31,7 @@ class TimeDropdownWidget extends StatelessWidget {
           decorationColor: white,
         ),
         value: value,
-        items: timeFilterItems.map((String items) {
+        items: allValues.map((String items) {
           return DropdownMenuItem(
             value: items,
             child: Text(items),

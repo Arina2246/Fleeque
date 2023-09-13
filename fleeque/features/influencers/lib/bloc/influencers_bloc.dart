@@ -53,7 +53,6 @@ class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
   }
 
   Future<void> filterData(Emitter emit, Map<String, dynamic> filters) async {
-    print(filters);
     var collectionCopy = [...collection];
     if (filters['time'] == timeNewest) {
       collectionCopy.sort(
@@ -71,6 +70,29 @@ class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
           .where(
             (el) => el.name.toLowerCase().contains(
                   filters['search'].toLowerCase(),
+                ),
+          )
+          .toList();
+    }
+    if (filters['followers'] == followersOverMillion) {
+      collectionCopy = collectionCopy
+          .where(
+            (el) => el.followers > 999999,
+          )
+          .toList();
+    }
+    if (filters['followers'] == followersUnderMillion) {
+      collectionCopy = collectionCopy
+          .where(
+            (el) => el.followers < 1000000,
+          )
+          .toList();
+    }
+    if (filters['country'] != countrySelect) {
+      collectionCopy = collectionCopy
+          .where(
+            (el) => el.country.toLowerCase().contains(
+                  filters['country'].toLowerCase(),
                 ),
           )
           .toList();

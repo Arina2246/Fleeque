@@ -1,11 +1,10 @@
 import 'dart:async';
 
 import 'package:app_bar/app_bar.dart';
+import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
-import 'package:filter/screens/widgets/input.dart';
-import 'package:filter/screens/widgets/price_dropdown.dart';
+import 'package:filter/screens/widgets/dropdown_widget.dart';
 import 'package:filter/screens/widgets/search_input.dart';
-import 'package:filter/screens/widgets/time_dropdown.dart';
 import 'package:flutter/material.dart';
 
 class FilterScreen extends StatefulWidget {
@@ -19,8 +18,8 @@ class FilterScreen extends StatefulWidget {
 class _FilterScreen extends State<FilterScreen> {
   String priceSorting = 'Select';
   String timeSorting = 'Select';
-  final TextEditingController _popularityController = TextEditingController();
-  final TextEditingController _countryController = TextEditingController();
+  String followersFiltering = 'Select';
+  String countryFiltering = 'Select';
   final TextEditingController _searchController = TextEditingController();
 
   updatePriceSorting(String? newValue) {
@@ -49,6 +48,8 @@ class _FilterScreen extends State<FilterScreen> {
     widget.controller.add({
       'time': timeSorting,
       'price': priceSorting,
+      'followers': followersFiltering,
+      'country': countryFiltering,
       'search': _searchController.text
     });
     Navigator.pop(context);
@@ -80,9 +81,10 @@ class _FilterScreen extends State<FilterScreen> {
             const RegularTextWidget(
                 text: 'price', color: white, textAlign: TextAlign.left),
             const Divider(color: white),
-            PriceDropdownWidget(
+            FilterDropdownWidget(
               callback: updatePriceSorting,
               value: priceSorting,
+              allValues: priceFilterItems,
             ),
             const Spacer(
               flex: 2,
@@ -90,9 +92,10 @@ class _FilterScreen extends State<FilterScreen> {
             const RegularTextWidget(
                 text: 'time', color: white, textAlign: TextAlign.left),
             const Divider(color: white),
-            TimeDropdownWidget(
+            FilterDropdownWidget(
               callback: updateTimeSorting,
               value: timeSorting,
+              allValues: timeFilterItems,
             ),
             const Spacer(
               flex: 2,
@@ -100,9 +103,14 @@ class _FilterScreen extends State<FilterScreen> {
             const RegularTextWidget(
                 text: 'popularity', color: white, textAlign: TextAlign.left),
             const Divider(color: white),
-            TextInputWidget(
-              labelText: '> 1m followers',
-              controller: _popularityController,
+            FilterDropdownWidget(
+              callback: (String? newValue) => {
+                setState(() {
+                  followersFiltering = newValue!;
+                }),
+              },
+              value: followersFiltering,
+              allValues: followersFilterItems,
             ),
             const Spacer(
               flex: 2,
@@ -110,9 +118,14 @@ class _FilterScreen extends State<FilterScreen> {
             const RegularTextWidget(
                 text: 'country', color: white, textAlign: TextAlign.left),
             const Divider(color: white),
-            TextInputWidget(
-              labelText: 'France',
-              controller: _countryController,
+            FilterDropdownWidget(
+              callback: (String? newValue) => {
+                setState(() {
+                  countryFiltering = newValue!;
+                }),
+              },
+              value: countryFiltering,
+              allValues: countryFilterItems,
             ),
             const Spacer(
               flex: 4,

@@ -7,6 +7,7 @@ class InfluencerEntity extends Equatable {
   final String img;
   final int basicPrice;
   final String time;
+  final String country;
 
   const InfluencerEntity({
     required this.name,
@@ -15,6 +16,7 @@ class InfluencerEntity extends Equatable {
     required this.img,
     required this.basicPrice,
     required this.time,
+    required this.country,
   });
 
   @override
@@ -23,5 +25,8 @@ class InfluencerEntity extends Equatable {
         posts,
         followers,
         img,
+        basicPrice,
+        time,
+        country,
       ];
 }

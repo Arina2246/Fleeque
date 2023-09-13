@@ -1,11 +1,28 @@
+import 'filters_constants.dart';
+
 const priceFilterItems = [
-  'Select',
-  'High to low',
-  'Low to high',
+  priceSelect,
+  priceHighToLow,
+  priceLowToHigh,
 ];
 
 const timeFilterItems = [
-  'Select',
-  'Newest',
-  'Oldest',
+  timeSelect,
+  timeNewest,
+  timeOldest,
+];
+
+const followersFilterItems = [
+  followersSelect,
+  followersOverMillion,
+  followersUnderMillion,
+];
+
+const countryFilterItems = [
+  countrySelect,
+  countryFrance,
+  countryGermany,
+  countrySwitzerland,
+  countryItaly,
+  countryNetherlands,
 ];

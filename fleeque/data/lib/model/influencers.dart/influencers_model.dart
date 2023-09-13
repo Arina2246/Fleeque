@@ -9,6 +9,7 @@ class InfluencerModel extends InfluencerEntity {
     required final String img,
     required final int basicPrice,
     required final String time,
+    required final String country,
   }) : super(
           name: name,
           posts: posts,
@@ -16,6 +17,7 @@ class InfluencerModel extends InfluencerEntity {
           img: img,
           basicPrice: basicPrice,
           time: time,
+          country: country,
         );
 
   factory InfluencerModel.fromSnapshot(
@@ -27,6 +29,7 @@ class InfluencerModel extends InfluencerEntity {
       img: querySnapshot.get('img'),
       basicPrice: querySnapshot.get('basicPrice'),
       time: querySnapshot.get('time'),
+      country: querySnapshot.get('country'),
     );
   }
 
@@ -38,6 +41,7 @@ class InfluencerModel extends InfluencerEntity {
       img: img,
       basicPrice: model.basicPrice,
       time: model.time,
+      country: model.country,
     );
   }
 
@@ -49,6 +53,7 @@ class InfluencerModel extends InfluencerEntity {
       "img": img,
       "basicPrice": basicPrice,
       "time": time,
+      "country": country,
     };
   }
 }
