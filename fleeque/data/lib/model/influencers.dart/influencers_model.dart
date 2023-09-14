@@ -33,18 +33,6 @@ class InfluencerModel extends InfluencerEntity {
     );
   }
 
-  factory InfluencerModel.updateImg(InfluencerModel model, String img) {
-    return InfluencerModel(
-      name: model.name,
-      posts: model.posts,
-      followers: model.followers,
-      img: img,
-      basicPrice: model.basicPrice,
-      time: model.time,
-      country: model.country,
-    );
-  }
-
   Map<String, dynamic> toDocument() {
     return {
       "name": name,

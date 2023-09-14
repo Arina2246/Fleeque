@@ -10,8 +10,4 @@ class InfluencersRepositoryImpl extends InfluencersRepository {
   @override
   Future<List<InfluencerEntity>> getInfluencersCollection() async =>
       provider.getInfluencersCollection();
-
-  @override
-  Future<String> getDownloadURL(String imgName) async =>
-      provider.getDownloadURL(imgName);
 }

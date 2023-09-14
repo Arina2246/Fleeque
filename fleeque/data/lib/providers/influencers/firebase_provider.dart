@@ -17,17 +17,11 @@ class FirebaseProvider {
         List<InfluencerEntity> influencerDataList = [];
         for (var el in snapshot.docs) {
           var influencerData = InfluencerModel.fromSnapshot(el);
-          var img = await getDownloadURL(influencerData.img);
-          var updatedInfluencerData =
-              InfluencerModel.updateImg(influencerData, img);
-          influencerDataList.add(updatedInfluencerData);
+          influencerDataList.add(influencerData);
         }
         return influencerDataList;
       },
     );
     return influencers;
   }
-
-  Future<String> getDownloadURL(String imgName) async =>
-      storage.ref().child(imgName).getDownloadURL();
 }

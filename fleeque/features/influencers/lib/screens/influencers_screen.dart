@@ -1,4 +1,3 @@
-import 'package:domain/usecases/influencers/get_download_url_usecase.dart';
 import 'package:domain/usecases/influencers/get_influencers_collection_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +12,6 @@ class InfluencersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => InfluencersBloc(
-        getDownloadUrlUsecase: di.sl<GetDownloadUrlUsecase>(),
         getInfluencersCollectionUsecase:
             di.sl<GetInfluencersCollectionUsecase>(),
       )..add(Init()),
