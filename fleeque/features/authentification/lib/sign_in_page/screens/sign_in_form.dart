@@ -35,7 +35,7 @@ class _SignInForm extends State<SignInForm> {
         _passwordController.text.isNotEmpty) {
       BlocProvider.of<SignInBloc>(context).add(
         SubmitSignIn(
-          UserEntity(
+          AuthentificationEntity(
             email: _emailController.text,
             password: _passwordController.text,
           ),

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:domain/entities/authentification/authentification_entities.dart';
 
-class UserModel extends UserEntity {
-  const UserModel({
+class AuthentificationModel extends AuthentificationEntity {
+  const AuthentificationModel({
     required final String email,
     required final String password,
   }) : super(
@@ -10,8 +10,9 @@ class UserModel extends UserEntity {
           password: password,
         );
 
-  factory UserModel.fromSnapshot(DocumentSnapshot documentSnapshot) {
-    return UserModel(
+  factory AuthentificationModel.fromSnapshot(
+      DocumentSnapshot documentSnapshot) {
+    return AuthentificationModel(
       email: documentSnapshot.get('email'),
       password: documentSnapshot.get('password'),
     );

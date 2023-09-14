@@ -13,12 +13,12 @@ class FirebaseProvider {
 
   Future<bool> isSignIn() async => auth.currentUser?.uid != null;
 
-  Future<void> signIn(UserEntity user) async => auth.signInWithEmailAndPassword(
-      email: user.email, password: user.password);
+  Future<void> signIn(AuthentificationEntity user) async => auth
+      .signInWithEmailAndPassword(email: user.email, password: user.password);
 
   Future<void> signOut() async => auth.signOut();
 
-  Future<void> signUp(UserEntity user) async =>
+  Future<void> signUp(AuthentificationEntity user) async =>
       auth.createUserWithEmailAndPassword(
           email: user.email, password: user.password);
 

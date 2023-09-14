@@ -11,7 +11,7 @@ class LoggedIn extends SignInEvent {}
 class LoggedOut extends SignInEvent {}
 
 class SubmitSignIn extends SignInEvent {
-  final UserEntity user;
+  final AuthentificationEntity user;
   const SubmitSignIn(this.user);
 }
 

@@ -1,11 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:domain/entities/authentification/authentification_entities.dart';
+import 'package:domain/entities/user/user_entities.dart';
 import 'package:domain/usecases/authentification/error_usecase.dart';
 import 'package:domain/usecases/authentification/get_current_uid_usecase.dart';
 import 'package:domain/usecases/authentification/is_sign_in_usecase.dart';
 import 'package:domain/usecases/authentification/sign_out_usecase.dart';
 import 'package:domain/usecases/authentification/sign_in_usecase.dart';
 import 'package:domain/usecases/authentification/sign_in_with_google_usecase.dart';
+import 'package:domain/usecases/user/delete_user_data_usecase.dart';
+import 'package:domain/usecases/user/put_user_data_usecase.dart';
 import 'package:equatable/equatable.dart';
 
 part 'sign_in_event.dart';
@@ -18,6 +21,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   final SignOutUseCase signOutUseCase;
   final SignInUseCase signInUseCase;
   final SignInWithGoogleUsecase signInWithGoogleUsecase;
+  final PutUserDataUseCase putUserDataUseCase;
+  final DeleteUserDataUseCase deleteUserDataUseCase;
   SignInBloc({
     required this.errorAuthentificationUsecase,
     required this.getCurrentUidUseCase,
@@ -25,6 +30,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     required this.signOutUseCase,
     required this.signInUseCase,
     required this.signInWithGoogleUsecase,
+    required this.putUserDataUseCase,
+    required this.deleteUserDataUseCase,
   }) : super(
           const SignInState(
               uid: '',
@@ -68,6 +75,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       );
       if (isSignIn) {
         final uid = await getCurrentUidUseCase.call();
+        await putUserDataUseCase.call(UserEntity(uid: uid));
         emit(
           SignInState(
               uid: uid,
@@ -101,6 +109,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   Future<void> loggedOut(Emitter emit) async {
     try {
       await signOutUseCase.call();
+      await deleteUserDataUseCase.call();
       emit(
         const SignInState(
             uid: '',
@@ -122,7 +131,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   }
 
   Future<void> submitSignIn(
-      {required Emitter emit, required UserEntity user}) async {
+      {required Emitter emit, required AuthentificationEntity user}) async {
     emit(
       const SignInState(
           uid: '',
@@ -134,6 +143,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     try {
       await signInUseCase.call(user);
       final uid = await getCurrentUidUseCase.call();
+      await putUserDataUseCase.call(UserEntity(uid: uid));
       emit(
         SignInState(
             uid: uid,
@@ -159,6 +169,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     try {
       await signInWithGoogleUsecase.call();
       final uid = await getCurrentUidUseCase.call();
+      await putUserDataUseCase.call(UserEntity(uid: uid));
       emit(
         SignInState(
             uid: uid,

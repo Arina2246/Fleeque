@@ -34,7 +34,7 @@ class _SignUpForm extends State<SignUpForm> {
         _passwordController.text.isNotEmpty) {
       BlocProvider.of<SignUpBloc>(context).add(
         SubmitSignUp(
-          UserEntity(
+          AuthentificationEntity(
             email: _emailController.text,
             password: _passwordController.text,
           ),

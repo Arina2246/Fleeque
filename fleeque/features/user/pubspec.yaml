@@ -1,4 +1,4 @@
-name: contact
+name: user
 description: A new Flutter package project.
 version: 0.0.1
 homepage:
@@ -12,14 +12,23 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  app_bar:
-    path: ../../features/app_bar
-  nav_bar:
-    path: ../../features/nav_bar
+  firebase_core: ^2.15.1
+  firebase_auth: ^4.8.0
+  google_fonts: ^5.1.0
   core_ui:
     path: ../../core_UI
-  user:
-    path: ../../features/user
+  core:
+    path: ../../core
+  get_it: ^7.6.0
+  domain:
+    path: ../../domain
+  data:
+    path: ../../data
+  home:
+    path: ../../features/home
+  flutter_bloc: ^8.1.3
+  bloc: any
+  equatable: any
 
 dev_dependencies:
   flutter_test:

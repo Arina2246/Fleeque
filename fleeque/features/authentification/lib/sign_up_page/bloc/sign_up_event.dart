@@ -9,7 +9,7 @@ class LoggedIn extends SignUpEvent {}
 class LoggedOut extends SignUpEvent {}
 
 class SubmitSignUp extends SignUpEvent {
-  final UserEntity user;
+  final AuthentificationEntity user;
   const SubmitSignUp(this.user);
 }
 

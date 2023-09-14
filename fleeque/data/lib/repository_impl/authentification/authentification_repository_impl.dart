@@ -14,13 +14,15 @@ class AuthentificationRepositoryImpl extends AuthentificationRepository {
   Future<bool> isSignIn() async => provider.isSignIn();
 
   @override
-  Future<void> signIn(UserEntity user) async => provider.signIn(user);
+  Future<void> signIn(AuthentificationEntity user) async =>
+      provider.signIn(user);
 
   @override
   Future<void> signOut() async => provider.signOut();
 
   @override
-  Future<void> signUp(UserEntity user) async => provider.signUp(user);
+  Future<void> signUp(AuthentificationEntity user) async =>
+      provider.signUp(user);
 
   @override
   String error(Object error) => provider.error(error);
