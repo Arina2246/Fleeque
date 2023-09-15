@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:app_bar/app_bar.dart';
@@ -10,28 +8,8 @@ import 'package:nav_bar/screens/nav_bar.dart';
 import 'package:core_ui/widgets/influencers/error.dart';
 import 'package:core_ui/widgets/influencers/loading.dart';
 
-class InfluencersForm extends StatefulWidget {
+class InfluencersForm extends StatelessWidget {
   const InfluencersForm({super.key});
-
-  @override
-  State<InfluencersForm> createState() => _InfluencersForm();
-}
-
-class _InfluencersForm extends State<InfluencersForm> {
-  StreamController<Map<String, dynamic>> controller =
-      StreamController<Map<String, dynamic>>();
-
-  late Stream stream = controller.stream;
-
-  @override
-  initState() {
-    super.initState();
-    stream.listen((value) {
-      BlocProvider.of<InfluencersBloc>(context).add(
-        Filter(value),
-      );
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +33,6 @@ class _InfluencersForm extends State<InfluencersForm> {
           }
           return InfluencersWidget(
             influencersCollection: state.influencersCollection,
-            controller: controller,
           );
         },
       ),

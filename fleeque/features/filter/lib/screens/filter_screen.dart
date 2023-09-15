@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:app_bar/app_bar.dart';
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
@@ -8,8 +6,7 @@ import 'package:filter/screens/widgets/search_input.dart';
 import 'package:flutter/material.dart';
 
 class FilterScreen extends StatefulWidget {
-  final StreamController<Map<String, dynamic>> controller;
-  const FilterScreen({Key? key, required this.controller}) : super(key: key);
+  const FilterScreen({Key? key}) : super(key: key);
 
   @override
   State<FilterScreen> createState() => _FilterScreen();
@@ -45,13 +42,13 @@ class _FilterScreen extends State<FilterScreen> {
   }
 
   sendFilterData() {
-    widget.controller.add({
-      'time': timeSorting,
-      'price': priceSorting,
-      'followers': followersFiltering,
-      'country': countryFiltering,
-      'search': _searchController.text
-    });
+    // widget.controller.add({
+    //   'time': timeSorting,
+    //   'price': priceSorting,
+    //   'followers': followersFiltering,
+    //   'country': countryFiltering,
+    //   'search': _searchController.text
+    // });
     Navigator.pop(context);
   }
 

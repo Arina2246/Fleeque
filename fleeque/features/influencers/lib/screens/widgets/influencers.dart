@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:core_ui/core_ui.dart';
 import 'package:core_ui/widgets/influencers/influencer_list/influencer_list.dart';
 import 'package:domain/entities/influencers/influencers_entities.dart';
@@ -8,10 +7,8 @@ import 'package:influencers/screens/widgets/filter_button.dart';
 
 class InfluencersWidget extends StatelessWidget {
   final List<InfluencerEntity> influencersCollection;
-  final StreamController<Map<String, dynamic>> controller;
 
-  const InfluencersWidget(
-      {Key? key, required this.influencersCollection, required this.controller})
+  const InfluencersWidget({Key? key, required this.influencersCollection})
       : super(key: key);
 
   @override
@@ -22,16 +19,14 @@ class InfluencersWidget extends StatelessWidget {
           SizedBox(
             height: 90,
             width: MediaQuery.of(context).size.width * 0.85,
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const ExtraBoldTextWidget(
+                ExtraBoldTextWidget(
                     text: 'Influencers',
                     color: black,
                     textAlign: TextAlign.left),
-                FilternButtonWidget(
-                  controller: controller,
-                ),
+                FilternButtonWidget(),
               ],
             ),
           ),
