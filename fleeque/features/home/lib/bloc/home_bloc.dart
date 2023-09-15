@@ -22,23 +22,20 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> init(Emitter emit) async {
-    try {
-      var influencersCollection = await getInfluencersCollectionUsecase.call();
-      emit(
-        HomeState(
+    await emit.forEach(
+      getInfluencersCollectionUsecase.call(),
+      onData: (List<InfluencerEntity> influencersCollection) {
+        return HomeState(
           influencersCollection: influencersCollection,
           isLoading: false,
           isError: false,
-        ),
-      );
-    } catch (e) {
-      emit(
-        const HomeState(
-          influencersCollection: [],
-          isLoading: false,
-          isError: true,
-        ),
-      );
-    }
+        );
+      },
+      onError: (error, stackTrace) => const HomeState(
+        influencersCollection: [],
+        isLoading: false,
+        isError: true,
+      ),
+    );
   }
 }

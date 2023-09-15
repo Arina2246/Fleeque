@@ -29,26 +29,24 @@ class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
       },
     );
   }
+
   Future<void> init(Emitter emit) async {
-    try {
-      var influencersCollection = await getInfluencersCollectionUsecase.call();
-      emit(
-        InfluencersState(
+    await emit.forEach(
+      getInfluencersCollectionUsecase.call(),
+      onData: (List<InfluencerEntity> influencersCollection) {
+        collection = influencersCollection;
+        return InfluencersState(
           influencersCollection: influencersCollection,
           isLoading: false,
           isError: false,
-        ),
-      );
-      collection = state.influencersCollection;
-    } catch (e) {
-      emit(
-        const InfluencersState(
-          influencersCollection: [],
-          isLoading: false,
-          isError: true,
-        ),
-      );
-    }
+        );
+      },
+      onError: (error, stackTrace) => const InfluencersState(
+        influencersCollection: [],
+        isLoading: false,
+        isError: true,
+      ),
+    );
   }
 
   Future<void> filterData(Emitter emit, Map<String, dynamic> filters) async {

@@ -13,7 +13,6 @@ Future<void> influencersDI() async {
   sl.registerLazySingleton<FirebaseProvider>(
     () => FirebaseProvider(
       firestore: sl.call(),
-      storage: sl.call(),
     ),
   );
 

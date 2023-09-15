@@ -6,7 +6,7 @@ class GetInfluencersCollectionUsecase {
 
   GetInfluencersCollectionUsecase({required this.repository});
 
-  Future<List<InfluencerEntity>> call() async {
+  Stream<List<InfluencerEntity>> call() {
     return repository.getInfluencersCollection();
   }
 }

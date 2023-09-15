@@ -8,6 +8,6 @@ class InfluencersRepositoryImpl extends InfluencersRepository {
   InfluencersRepositoryImpl({required this.provider});
 
   @override
-  Future<List<InfluencerEntity>> getInfluencersCollection() async =>
+  Stream<List<InfluencerEntity>> getInfluencersCollection() =>
       provider.getInfluencersCollection();
 }
