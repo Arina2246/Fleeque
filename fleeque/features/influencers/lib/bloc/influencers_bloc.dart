@@ -13,7 +13,9 @@ class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
     required this.getInfluencersCollectionUsecase,
   }) : super(
           const InfluencersState(
-            influencersStream: null,
+            influencersCollection: [],
+            isLoading: true,
+            isError: false,
           ),
         ) {
     on<Init>(
@@ -24,9 +26,20 @@ class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
   }
 
   Future<void> init(Emitter emit) async {
-    var influencersStream = getInfluencersCollectionUsecase.call();
-    emit(InfluencersState(
-      influencersStream: influencersStream,
-    ));
+    await emit.forEach(
+      getInfluencersCollectionUsecase.call(),
+      onData: (List<InfluencerEntity> influencersCollection) {
+        return InfluencersState(
+          influencersCollection: influencersCollection,
+          isLoading: false,
+          isError: false,
+        );
+      },
+      onError: (error, stackTrace) => const InfluencersState(
+        influencersCollection: [],
+        isLoading: false,
+        isError: true,
+      ),
+    );
   }
 }

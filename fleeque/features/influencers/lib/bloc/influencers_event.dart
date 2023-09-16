@@ -5,8 +5,3 @@ sealed class InfluencersEvent {
 }
 
 class Init extends InfluencersEvent {}
-
-class Filter extends InfluencersEvent {
-  final Map<String, dynamic> filterData;
-  Filter(this.filterData);
-}
