@@ -1,10 +1,40 @@
 part of 'filter_bloc.dart';
 
-sealed class FilterState extends Equatable {
-  const FilterState();
-  
-  @override
-  List<Object> get props => [];
-}
+class FilterState extends Equatable {
+  final String priceSorting;
+  final String timeSorting;
+  final String followersFiltering;
+  final String countryFiltering;
+  final String searchText;
+  const FilterState(
+      {required this.priceSorting,
+      required this.timeSorting,
+      required this.followersFiltering,
+      required this.countryFiltering,
+      required this.searchText});
 
-final class FilterInitial extends FilterState {}
+  FilterState copyWith({
+    String? priceSorting,
+    String? timeSorting,
+    String? followersFiltering,
+    String? countryFiltering,
+    String? searchText,
+  }) {
+    return FilterState(
+      priceSorting: priceSorting ?? this.priceSorting,
+      timeSorting: timeSorting ?? this.timeSorting,
+      followersFiltering: followersFiltering ?? this.followersFiltering,
+      countryFiltering: countryFiltering ?? this.countryFiltering,
+      searchText: searchText ?? this.searchText,
+    );
+  }
+
+  @override
+  List<Object> get props => [
+        priceSorting,
+        timeSorting,
+        followersFiltering,
+        countryFiltering,
+        searchText
+      ];
+}

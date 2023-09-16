@@ -32,7 +32,9 @@ class InfluencerListWidget extends StatelessWidget {
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: (itemsCount),
+        itemCount: (influencersCollection.length < itemsCount
+            ? influencersCollection.length
+            : itemsCount),
         padding: const EdgeInsets.only(bottom: 30),
         itemBuilder: (BuildContext context, int index) {
           return Padding(
