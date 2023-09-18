@@ -24,10 +24,32 @@ class _UserForm extends State<UserForm> {
             return const SizedBox(
                 height: 60, width: 100, child: Text('loading...'));
           } else {
-            return SizedBox(
-                height: 60,
-                width: 300,
-                child: Text('user uid: ${state.userData!.uid}'));
+            return Column(
+              children: [
+                Row(
+                  children: [
+                    ElevatedButton(
+                        onPressed: () => {
+                              BlocProvider.of<UserBloc>(context).add(
+                                UpdateName(),
+                              ),
+                            },
+                        child: Text('change name')),
+                    ElevatedButton(
+                        onPressed: () => {
+                              BlocProvider.of<UserBloc>(context).add(
+                                ShowName(),
+                              ),
+                            },
+                        child: Text('show name')),
+                  ],
+                ),
+                // SizedBox(
+                //     // height: 50,
+                //     width: 300,
+                //     child: Text('user uid: ${state.userData!.uid}')),
+              ],
+            );
           }
         },
       ),

@@ -1,4 +1,6 @@
 import 'package:domain/usecases/user/get_user_data_usecase.dart';
+import 'package:domain/usecases/user/get_user_uid_usecase.dart';
+import 'package:domain/usecases/user/update_user_data_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,8 +15,10 @@ class UserScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => UserBloc(
+        getUserUidUseCase: di.sl<GetUserUidUseCase>(),
         getUserDataUseCase: di.sl<GetUserDataUseCase>(),
-      )..add(GetUserData()),
+        updateUserDataUseCase: di.sl<UpdateUserDataUseCase>(),
+      )..add(GetUserUid()),
       child: const UserForm(),
     );
   }

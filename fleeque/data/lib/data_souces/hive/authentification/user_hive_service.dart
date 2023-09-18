@@ -1,4 +1,4 @@
-import 'package:data/model/user/user_model.dart';
+import 'package:data/model/user/local/user_model.dart';
 import 'package:core/data_constants/authentification.dart';
 import 'package:domain/entities/user/user_entities.dart';
 import 'package:hive/hive.dart';
@@ -9,7 +9,7 @@ class UserHiveService {
     required this.box,
   });
 
-  Future<UserEntity> getUserData() async {
+  Future<UserEntity> getUserUid() async {
     var data = box.get(user);
     UserEntity dataObj = UserEntity(
       uid: data!.uid,
@@ -17,7 +17,7 @@ class UserHiveService {
     return dataObj;
   }
 
-  Future<void> putUserData(UserEntity data) async {
+  Future<void> putUserUid(UserEntity data) async {
     box.put(
         user,
         UserModel(
@@ -25,7 +25,7 @@ class UserHiveService {
         ));
   }
 
-  Future<void> deleteUserData() async {
+  Future<void> deleteUserUid() async {
     await box.delete(user);
   }
 }

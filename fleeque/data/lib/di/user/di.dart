@@ -1,15 +1,19 @@
 import 'package:data/data_souces/hive/authentification/user_hive_service.dart';
 import 'package:data/repository_impl/user/user_repository_impl.dart';
 import 'package:domain/repository/user/user_repository.dart';
-import 'package:domain/usecases/user/delete_user_data_usecase.dart';
+import 'package:domain/usecases/user/delete_user_uid_usecase.dart';
 import 'package:domain/usecases/user/get_user_data_usecase.dart';
-import 'package:domain/usecases/user/put_user_data_usecase.dart';
+import 'package:domain/usecases/user/get_user_uid_usecase.dart';
+import 'package:domain/usecases/user/put_user_uid_usecase.dart';
+import 'package:domain/usecases/user/update_user_data_usecase.dart';
+import 'package:data/providers/user/firebase_provider.dart';
 import '../di.dart';
 
 Future<void> userDI() async {
   sl.registerLazySingleton<UserRepository>(
     () => UserRepositoryImpl(
       hiveService: sl.call(),
+      provider: sl.call(),
     ),
   );
 
@@ -18,19 +22,34 @@ Future<void> userDI() async {
       box: sl.call(),
     ),
   );
+  sl.registerLazySingleton<FirebaseProvider>(
+    () => FirebaseProvider(
+      firestore: sl.call(),
+    ),
+  );
 
+  sl.registerLazySingleton<GetUserUidUseCase>(
+    () => GetUserUidUseCase(
+      repository: sl.call(),
+    ),
+  );
+  sl.registerLazySingleton<PutUserUidUseCase>(
+    () => PutUserUidUseCase(
+      repository: sl.call(),
+    ),
+  );
+  sl.registerLazySingleton<DeleteUserUidUseCase>(
+    () => DeleteUserUidUseCase(
+      repository: sl.call(),
+    ),
+  );
   sl.registerLazySingleton<GetUserDataUseCase>(
     () => GetUserDataUseCase(
       repository: sl.call(),
     ),
   );
-  sl.registerLazySingleton<PutUserDataUseCase>(
-    () => PutUserDataUseCase(
-      repository: sl.call(),
-    ),
-  );
-  sl.registerLazySingleton<DeleteUserDataUseCase>(
-    () => DeleteUserDataUseCase(
+  sl.registerLazySingleton<UpdateUserDataUseCase>(
+    () => UpdateUserDataUseCase(
       repository: sl.call(),
     ),
   );

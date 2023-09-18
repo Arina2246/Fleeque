@@ -1,6 +1,6 @@
 import 'package:core/core.dart';
 import 'package:core/data_constants/authentification.dart';
-import 'package:data/model/user/user_model.dart';
+import 'package:data/model/user/local/user_model.dart';
 import 'package:fleeque/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';

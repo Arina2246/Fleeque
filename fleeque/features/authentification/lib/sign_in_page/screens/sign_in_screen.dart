@@ -1,7 +1,7 @@
 import 'package:authentification/sign_in_page/bloc/sign_in_bloc.dart';
 import 'package:authentification/sign_in_page/screens/sign_in_form.dart';
-import 'package:domain/usecases/user/delete_user_data_usecase.dart';
-import 'package:domain/usecases/user/put_user_data_usecase.dart';
+import 'package:domain/usecases/user/delete_user_uid_usecase.dart';
+import 'package:domain/usecases/user/put_user_uid_usecase.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,8 +27,8 @@ class SignInScreen extends StatelessWidget {
         signOutUseCase: di.sl<SignOutUseCase>(),
         signInUseCase: di.sl<SignInUseCase>(),
         signInWithGoogleUsecase: di.sl<SignInWithGoogleUsecase>(),
-        putUserDataUseCase: di.sl<PutUserDataUseCase>(),
-        deleteUserDataUseCase: di.sl<DeleteUserDataUseCase>(),
+        putUserUidUseCase: di.sl<PutUserUidUseCase>(),
+        deleteUserUidUseCase: di.sl<DeleteUserUidUseCase>(),
       )..add(Init()),
       child: const SignInForm(),
     );

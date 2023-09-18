@@ -1,11 +1,11 @@
 import 'package:domain/repository/user/user_repository.dart';
 
-class DeleteUserDataUseCase {
+class DeleteUserUidUseCase {
   final UserRepository repository;
 
-  DeleteUserDataUseCase({required this.repository});
+  DeleteUserUidUseCase({required this.repository});
 
   Future<void> call() async {
-    return repository.deleteUserData();
+    return repository.deleteUserUid();
   }
 }
