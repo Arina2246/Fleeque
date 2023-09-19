@@ -20,6 +20,7 @@ class WelcomeScreen extends StatelessWidget {
         isUserShown: true,
         isLogoShown: true,
         isInfoShown: true,
+        isSettingsShown: false,
       ),
       body: Container(
         height: double.infinity,

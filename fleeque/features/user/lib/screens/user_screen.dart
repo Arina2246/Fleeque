@@ -1,3 +1,5 @@
+import 'package:domain/usecases/authentification/sign_out_usecase.dart';
+import 'package:domain/usecases/user/delete_user_uid_usecase.dart';
 import 'package:domain/usecases/user/get_user_data_usecase.dart';
 import 'package:domain/usecases/user/get_user_uid_usecase.dart';
 import 'package:domain/usecases/user/update_user_data_usecase.dart';
@@ -16,9 +18,11 @@ class UserScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => UserBloc(
         getUserUidUseCase: di.sl<GetUserUidUseCase>(),
+        deleteUserUidUseCase: di.sl<DeleteUserUidUseCase>(),
         getUserDataUseCase: di.sl<GetUserDataUseCase>(),
         updateUserDataUseCase: di.sl<UpdateUserDataUseCase>(),
-      )..add(GetUserUid()),
+        signOutUseCase: di.sl<SignOutUseCase>(),
+      )..add(GetUserData()),
       child: const UserForm(),
     );
   }

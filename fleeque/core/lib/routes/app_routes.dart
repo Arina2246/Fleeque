@@ -8,3 +8,4 @@ const String influencersRoute = '/influencer';
 const String aboutRoute = '/about';
 const String contactRoute = '/contact';
 const String filterRoute = '/filter';
+const String userRoute = '/user';

@@ -5,9 +5,9 @@ class UserEntity extends Equatable {
   final String? name;
   final String? email;
   final String? password;
-  final int? bankAccount;
+  final String? bankAccount;
   final String? insta;
-  final int? number;
+  final String? number;
 
   const UserEntity({
     required this.uid,

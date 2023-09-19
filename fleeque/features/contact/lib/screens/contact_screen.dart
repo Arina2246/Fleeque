@@ -2,7 +2,6 @@ import 'package:app_bar/app_bar.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:nav_bar/screens/nav_bar.dart';
-import 'package:user/screens/user_screen.dart';
 
 class ContactScreen extends StatelessWidget {
   const ContactScreen({super.key});
@@ -18,12 +17,15 @@ class ContactScreen extends StatelessWidget {
         isUserShown: true,
         isLogoShown: true,
         isInfoShown: true,
+        isSettingsShown: false,
       ),
       body: ListView(
         shrinkWrap: true,
         physics: const ClampingScrollPhysics(),
         padding: const EdgeInsets.all(20),
-        children: const [SizedBox(height: 60, width: 300, child: UserScreen())],
+        children: const [
+          SizedBox(height: 60, width: 300, child: Text('CALL THE POLICE'))
+        ],
       ),
       bottomNavigationBar: const NavBarWidget(),
     );

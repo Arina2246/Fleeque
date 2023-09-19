@@ -36,6 +36,7 @@ class _FilterForm extends State<FilterForm> {
         isUserShown: false,
         isLogoShown: false,
         isInfoShown: false,
+        isSettingsShown: false,
       ),
       body: BlocBuilder<FilterBloc, FilterState>(
         builder: (context, state) {

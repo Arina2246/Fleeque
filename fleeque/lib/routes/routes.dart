@@ -7,6 +7,7 @@ import 'package:authentification/sign_up_page/screens/sign_up_screen.dart';
 import 'package:about/screens/about_screen.dart';
 import 'package:home/screens/home_screen.dart';
 import 'package:influencers/screens/influencers_screen.dart';
+import 'package:user/screens/user_screen.dart';
 import 'package:welcome/welcome.dart';
 import 'package:carousel/carousel.dart';
 
@@ -56,6 +57,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         settings: settings,
         builder: (_) => const ContactScreen(),
+      );
+    case userRoute:
+      return MaterialPageRoute(
+        settings: settings,
+        builder: (_) => const UserScreen(),
       );
     default:
       return MaterialPageRoute(

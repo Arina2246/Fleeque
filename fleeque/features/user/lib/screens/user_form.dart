@@ -1,6 +1,11 @@
+import 'package:app_bar/app_bar.dart';
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user/bloc/user_bloc.dart';
+import 'package:user/screens/settings_screen.dart';
+import 'package:user/screens/widgets/general_info.dart';
+import 'package:user/screens/widgets/text_button_widget.dart';
 
 class UserForm extends StatefulWidget {
   const UserForm({Key? key}) : super(key: key);
@@ -10,44 +15,90 @@ class UserForm extends StatefulWidget {
 }
 
 class _UserForm extends State<UserForm> {
+  void submitUpdateUserData(
+      {required String number,
+      required String bankAccount,
+      required String email,
+      required String insta,
+      required String name}) {
+    BlocProvider.of<UserBloc>(context).add(
+      UpdateUserData(
+          number: number,
+          bankAccount: bankAccount,
+          email: email,
+          insta: insta,
+          name: name),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocConsumer<UserBloc, UserState>(
-        listener: (context, state) {
-          if (state.isLoading) {
-            print('KKMK');
-          }
-        },
+      appBar: const AppBarWidget(
+        backgroundColor: black,
+        isOnline: false,
+        isDiscontShown: false,
+        isWalletShown: false,
+        isUserShown: false,
+        isLogoShown: false,
+        isInfoShown: true,
+        isSettingsShown: true,
+      ),
+      body: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
           if (state.isLoading) {
-            return const SizedBox(
-                height: 60, width: 100, child: Text('loading...'));
+            return const CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(black),
+            );
           } else {
-            return Column(
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Row(
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ElevatedButton(
-                        onPressed: () => {
-                              BlocProvider.of<UserBloc>(context).add(
-                                UpdateName(),
-                              ),
-                            },
-                        child: Text('change name')),
-                    ElevatedButton(
-                        onPressed: () => {
-                              BlocProvider.of<UserBloc>(context).add(
-                                ShowName(),
-                              ),
-                            },
-                        child: Text('show name')),
+                    const Spacer(),
+                    GeneralInfoWidget(
+                      userData: state.userData!,
+                    ),
+                    const Spacer(),
+                    TextButtonWidget(
+                      callback: () => {},
+                      text: 'Donate',
+                    ),
+                    TextButtonWidget(
+                      callback: () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SettingsScreen(
+                              callback: submitUpdateUserData,
+                              userData: state.userData!,
+                            ),
+                          ),
+                        ),
+                      },
+                      text: 'Settings',
+                    ),
+                    TextButtonWidget(
+                      callback: () => {},
+                      text: 'Orders',
+                    ),
+                    TextButtonWidget(
+                      callback: () => {},
+                      text: 'Create Offer',
+                    ),
+                    TextButtonWidget(
+                      callback: () => {},
+                      text: 'Contact',
+                    ),
+                    TextButtonWidget(
+                      callback: () => {},
+                      text: 'Support',
+                    ),
+                    const Spacer(),
                   ],
                 ),
-                // SizedBox(
-                //     // height: 50,
-                //     width: 300,
-                //     child: Text('user uid: ${state.userData!.uid}')),
               ],
             );
           }

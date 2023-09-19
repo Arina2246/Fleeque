@@ -27,6 +27,7 @@ class _HomeForm extends State<HomeForm> {
         isUserShown: true,
         isLogoShown: true,
         isInfoShown: true,
+        isSettingsShown: false,
       ),
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {

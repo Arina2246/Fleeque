@@ -2,6 +2,7 @@ import 'package:app_bar/screens/widgets/back_button.dart';
 import 'package:app_bar/screens/widgets/discount_icon.dart';
 import 'package:app_bar/screens/widgets/info_icon.dart';
 import 'package:app_bar/screens/widgets/logo.dart';
+import 'package:app_bar/screens/widgets/settings_icon.dart';
 import 'package:app_bar/screens/widgets/user_icon.dart';
 import 'package:app_bar/screens/widgets/wallet_icon.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final bool isUserShown;
   final bool isLogoShown;
   final bool isInfoShown;
+  final bool isSettingsShown;
   final Color backgroundColor;
   const AppBarWidget(
       {Key? key,
@@ -22,6 +24,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       required this.isUserShown,
       required this.isLogoShown,
       required this.isInfoShown,
+      required this.isSettingsShown,
       required this.backgroundColor})
       : super(key: key);
 
@@ -51,6 +54,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
           ),
           const Spacer(),
           if (isLogoShown) const LogoWidget(),
+          if (isSettingsShown) const SettingsIconWidget(),
           const Spacer(),
           Expanded(
             child: Row(

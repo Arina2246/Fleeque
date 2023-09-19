@@ -17,6 +17,7 @@ class AboutScreen extends StatelessWidget {
         isUserShown: true,
         isLogoShown: true,
         isInfoShown: true,
+        isSettingsShown: false,
       ),
       body: ListView(
         shrinkWrap: true,

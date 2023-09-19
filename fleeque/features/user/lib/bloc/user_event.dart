@@ -7,8 +7,20 @@ sealed class UserEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetUserUid extends UserEvent {}
+class GetUserData extends UserEvent {}
 
-class UpdateName extends UserEvent {}
+class LogOut extends UserEvent {}
 
-class ShowName extends UserEvent {}
+class UpdateUserData extends UserEvent {
+  final String name;
+  final String email;
+  final String number;
+  final String insta;
+  final String bankAccount;
+  const UpdateUserData(
+      {required this.bankAccount,
+      required this.email,
+      required this.insta,
+      required this.name,
+      required this.number});
+}

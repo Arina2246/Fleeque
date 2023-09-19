@@ -5,7 +5,7 @@ import 'package:authentification/widgets/change_page.dart';
 import 'package:authentification/widgets/google_sign_in_button.dart';
 import 'package:authentification/widgets/intro_text.dart';
 import 'package:authentification/widgets/submit_button.dart';
-import 'package:authentification/widgets/text_input.dart';
+import 'package:core_ui/widgets/input/text_input.dart';
 import 'package:core/core.dart';
 import 'package:domain/entities/authentification/authentification_entities.dart';
 import 'package:flutter/material.dart';

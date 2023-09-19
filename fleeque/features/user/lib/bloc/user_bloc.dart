@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:domain/entities/user/user_entities.dart';
+import 'package:domain/usecases/authentification/sign_out_usecase.dart';
+import 'package:domain/usecases/user/delete_user_uid_usecase.dart';
 import 'package:domain/usecases/user/get_user_data_usecase.dart';
 import 'package:domain/usecases/user/get_user_uid_usecase.dart';
 import 'package:domain/usecases/user/update_user_data_usecase.dart';
@@ -10,49 +12,72 @@ part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   final GetUserUidUseCase getUserUidUseCase;
+  final DeleteUserUidUseCase deleteUserUidUseCase;
+  final SignOutUseCase signOutUseCase;
   final GetUserDataUseCase getUserDataUseCase;
   final UpdateUserDataUseCase updateUserDataUseCase;
   UserBloc({
     required this.getUserUidUseCase,
+    required this.deleteUserUidUseCase,
+    required this.signOutUseCase,
     required this.getUserDataUseCase,
     required this.updateUserDataUseCase,
   }) : super(const UserState(isLoading: true, userData: null)) {
-    on<GetUserUid>((event, emit) async {
-      await getUserUid(emit);
+    on<GetUserData>((event, emit) async {
+      await getUserData(emit);
     });
-    on<UpdateName>((event, emit) async {
-      await updateName();
+    on<LogOut>((event, emit) async {
+      await logOut(emit);
     });
-    on<ShowName>((event, emit) async {
-      await showName();
+    on<UpdateUserData>((event, emit) async {
+      await updateUserData(
+          name: event.name,
+          emit: emit,
+          email: event.email,
+          number: event.number,
+          insta: event.insta,
+          bankAccount: event.bankAccount);
     });
   }
-  Future<void> getUserUid(Emitter emit) async {
-    var userUid = await getUserUidUseCase.call();
-    var userfjhfjh = await getUserDataUseCase.call();
-    print(userfjhfjh.name);
-    print(userfjhfjh.email);
-    print(userfjhfjh.bankAccount);
-    print(userfjhfjh.insta);
-    print(userfjhfjh.number);
-    print(userfjhfjh.password);
+  Future<void> getUserData(Emitter emit) async {
+    var userData = await getUserDataUseCase.call();
     emit(
       UserState(
         isLoading: false,
-        userData: userUid,
+        userData: userData,
       ),
     );
   }
 
-  Future<void> updateName() async {
-    const name = 'arina';
-    var userUid = await getUserUidUseCase.call();
-    var u = UserEntity(uid: userUid.uid, name: name);
-    await updateUserDataUseCase.call(u);
+  Future<void> logOut(Emitter emit) async {
+    await signOutUseCase.call();
+    await deleteUserUidUseCase.call();
   }
 
-  Future<void> showName() async {
-    var userfjhfjh = await getUserDataUseCase.call();
-    print(userfjhfjh.name);
+  Future<void> updateUserData(
+      {required String name,
+      required String email,
+      required String number,
+      required String insta,
+      required String bankAccount,
+      required Emitter emit}) async {
+    var userUid = await getUserUidUseCase.call();
+
+    var entity = UserEntity(
+        uid: userUid.uid,
+        name: name,
+        email: email,
+        bankAccount: bankAccount,
+        insta: insta,
+        number: number);
+
+    await updateUserDataUseCase.call(entity);
+    emit(
+      const UserState(
+        isLoading: true,
+        userData: null,
+      ),
+    );
+    await getUserData(emit);
   }
 }

@@ -6,9 +6,9 @@ class UserModel extends UserEntity {
     required final String? email,
     required final String uid,
     required final String? password,
-    required final int? bankAccount,
+    required final String? bankAccount,
     required final String? insta,
-    required final int? number,
+    required final String? number,
     required final String? name,
   }) : super(
           email: email,

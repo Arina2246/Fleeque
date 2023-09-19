@@ -22,6 +22,7 @@ class InfluencersForm extends StatelessWidget {
         isUserShown: true,
         isLogoShown: true,
         isInfoShown: true,
+        isSettingsShown: false,
       ),
       body: BlocBuilder<InfluencersBloc, InfluencersState>(
         builder: (context, state) {

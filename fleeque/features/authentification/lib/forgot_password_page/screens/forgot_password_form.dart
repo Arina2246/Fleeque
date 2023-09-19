@@ -5,7 +5,7 @@ import 'package:authentification/forgot_password_page/screens/widgets/sucess.dar
 import 'package:authentification/widgets/change_page.dart';
 import 'package:authentification/widgets/intro_text.dart';
 import 'package:authentification/widgets/submit_button.dart';
-import 'package:authentification/widgets/text_input.dart';
+import 'package:core_ui/widgets/input/text_input.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
