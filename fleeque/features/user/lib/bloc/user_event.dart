@@ -24,3 +24,11 @@ class UpdateUserData extends UserEvent {
       required this.name,
       required this.number});
 }
+
+class UpdateUserImg extends UserEvent {
+  final XFile img;
+
+  const UpdateUserImg({
+    required this.img,
+  });
+}

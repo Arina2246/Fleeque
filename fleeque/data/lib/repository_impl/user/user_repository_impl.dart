@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:data/data_souces/hive/authentification/user_hive_service.dart';
 import 'package:data/providers/user/firebase_provider.dart';
 import 'package:domain/entities/user/user_entities.dart';
@@ -30,5 +32,11 @@ class UserRepositoryImpl extends UserRepository {
   Future<void> updateUserData(UserEntity user) async {
     var uid = await hiveService.getUserUid();
     provider.updateUserData(user: user, uid: uid.uid);
+  }
+
+  @override
+  Future<void> updateUserImg(File img) async {
+    var uid = await hiveService.getUserUid();
+    provider.updateUserImg(img: img, uid: uid.uid);
   }
 }

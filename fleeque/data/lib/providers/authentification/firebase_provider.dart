@@ -64,6 +64,7 @@ class FirebaseProvider {
               email: email,
               password: password,
               name: null,
+              img: null,
               bankAccount: null,
               insta: null,
               number: null)

@@ -3,9 +3,11 @@ import 'package:core_ui/core_ui.dart';
 import 'package:core_ui/widgets/input/text_input.dart';
 import 'package:domain/entities/user/user_entities.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:user/screens/widgets/general_info.dart';
 
 class SettingsScreen extends StatefulWidget {
+  final void Function({required XFile img}) uploadImg;
   final void Function(
       {required String bankAccount,
       required String email,
@@ -14,7 +16,10 @@ class SettingsScreen extends StatefulWidget {
       required String number}) callback;
   final UserEntity userData;
   const SettingsScreen(
-      {Key? key, required this.callback, required this.userData})
+      {Key? key,
+      required this.callback,
+      required this.userData,
+      required this.uploadImg})
       : super(key: key);
 
   @override
@@ -92,6 +97,7 @@ class _SettingsScreen extends State<SettingsScreen> {
               ),
               GeneralInfoWidget(
                 userData: widget.userData,
+                uploadImg: widget.uploadImg,
               ),
               const Spacer(
                 flex: 3,

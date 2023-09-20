@@ -3,6 +3,7 @@ import 'package:domain/usecases/user/delete_user_uid_usecase.dart';
 import 'package:domain/usecases/user/get_user_data_usecase.dart';
 import 'package:domain/usecases/user/get_user_uid_usecase.dart';
 import 'package:domain/usecases/user/update_user_data_usecase.dart';
+import 'package:domain/usecases/user/update_user_img_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,6 +22,7 @@ class UserScreen extends StatelessWidget {
         deleteUserUidUseCase: di.sl<DeleteUserUidUseCase>(),
         getUserDataUseCase: di.sl<GetUserDataUseCase>(),
         updateUserDataUseCase: di.sl<UpdateUserDataUseCase>(),
+        updateUserImgUseCase: di.sl<UpdateUserImgUseCase>(),
         signOutUseCase: di.sl<SignOutUseCase>(),
       )..add(GetUserData()),
       child: const UserForm(),

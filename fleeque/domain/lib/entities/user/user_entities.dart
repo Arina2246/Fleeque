@@ -8,6 +8,7 @@ class UserEntity extends Equatable {
   final String? bankAccount;
   final String? insta;
   final String? number;
+  final String? img;
 
   const UserEntity({
     required this.uid,
@@ -17,6 +18,7 @@ class UserEntity extends Equatable {
     this.bankAccount,
     this.insta,
     this.number,
+    this.img,
   });
 
   @override

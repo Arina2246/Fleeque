@@ -2,6 +2,7 @@ import 'package:app_bar/app_bar.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:user/bloc/user_bloc.dart';
 import 'package:user/screens/settings_screen.dart';
 import 'package:user/screens/widgets/general_info.dart';
@@ -28,6 +29,14 @@ class _UserForm extends State<UserForm> {
           email: email,
           insta: insta,
           name: name),
+    );
+  }
+
+  void submitUpdateUserImg({required XFile img}) {
+    BlocProvider.of<UserBloc>(context).add(
+      UpdateUserImg(
+        img: img,
+      ),
     );
   }
 
@@ -60,6 +69,7 @@ class _UserForm extends State<UserForm> {
                     const Spacer(),
                     GeneralInfoWidget(
                       userData: state.userData!,
+                      uploadImg: submitUpdateUserImg,
                     ),
                     const Spacer(),
                     TextButtonWidget(
@@ -72,6 +82,7 @@ class _UserForm extends State<UserForm> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => SettingsScreen(
+                              uploadImg: submitUpdateUserImg,
                               callback: submitUpdateUserData,
                               userData: state.userData!,
                             ),

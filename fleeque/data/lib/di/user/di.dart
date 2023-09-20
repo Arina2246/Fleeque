@@ -6,6 +6,7 @@ import 'package:domain/usecases/user/get_user_data_usecase.dart';
 import 'package:domain/usecases/user/get_user_uid_usecase.dart';
 import 'package:domain/usecases/user/put_user_uid_usecase.dart';
 import 'package:domain/usecases/user/update_user_data_usecase.dart';
+import 'package:domain/usecases/user/update_user_img_usecase.dart';
 import 'package:data/providers/user/firebase_provider.dart';
 import '../di.dart';
 
@@ -25,6 +26,7 @@ Future<void> userDI() async {
   sl.registerLazySingleton<FirebaseProvider>(
     () => FirebaseProvider(
       firestore: sl.call(),
+      storage: sl.call(),
     ),
   );
 
@@ -50,6 +52,11 @@ Future<void> userDI() async {
   );
   sl.registerLazySingleton<UpdateUserDataUseCase>(
     () => UpdateUserDataUseCase(
+      repository: sl.call(),
+    ),
+  );
+  sl.registerLazySingleton<UpdateUserImgUseCase>(
+    () => UpdateUserImgUseCase(
       repository: sl.call(),
     ),
   );

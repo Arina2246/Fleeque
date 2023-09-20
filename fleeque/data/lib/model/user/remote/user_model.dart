@@ -10,6 +10,7 @@ class UserModel extends UserEntity {
     required final String? insta,
     required final String? number,
     required final String? name,
+    required final String? img,
   }) : super(
           email: email,
           uid: uid,
@@ -18,6 +19,7 @@ class UserModel extends UserEntity {
           insta: insta,
           number: number,
           name: name,
+          img: img,
         );
 
   factory UserModel.fromSnapshot(
@@ -30,6 +32,7 @@ class UserModel extends UserEntity {
       insta: querySnapshot.get('insta'),
       number: querySnapshot.get('number'),
       name: querySnapshot.get('name'),
+      img: querySnapshot.get('img'),
     );
   }
 
@@ -42,6 +45,7 @@ class UserModel extends UserEntity {
       "insta": insta,
       "number": number,
       "name": name,
+      "img": img,
     };
   }
 }
